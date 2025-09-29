@@ -1,0 +1,672 @@
+/* Reset e configurações básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+html { scroll-behavior: smooth; }
+
+/* Paleta de cores */
+:root {
+    --bg: #ffffff;
+    --bg-elev: #f9fafb;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #4b5563;
+    --divider: #e5e7eb;
+}
+
+/* ============ HERO SECTION ============ */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Background das mãos */
+.hands {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-image: url('./img/Jardiel Carvalho_ITAU_Trampos do Futuro_19-02-2025-3551.jpg');
+    background-size: cover;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+/* ============ LOGOS DOS CANTOS ============ */
+/* Configuração geral para todas as logos de canto */
+.corner-logo {
+    position: absolute;
+    top: 16px;
+    width: clamp(40px, 7vw, 72px);
+    height: auto;
+    z-index: 100;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+    user-select: none;
+}
+
+/* Logo R (esquerda) - CORRIGIDO */
+.logo-left {
+    left: 16px; /* Posicionamento no canto superior esquerdo */
+}
+
+/* Logo FIRST (direita) */
+.logo-right {
+    right: 16px;
+    width: clamp(56px, 9vw, 112px);
+}
+
+/* ============ LINK DA LOGO FIRST ============ */
+.logo-link-right {
+    position: absolute; /* IMPORTANTE: posicionamento absoluto */
+    top: 16px; /* Mesma distância do topo */
+    right: 16px; /* Mesma distância da direita */
+    z-index: 100; /* Z-index alto para ficar por cima */
+    display: inline-block;
+    text-decoration: none;
+    pointer-events: auto;
+}
+
+.logo-link-right img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    width: clamp(56px, 9vw, 112px);
+    height: auto;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+}
+
+.logo-link-right img:hover {
+    transform: scale(1.05);
+}
+
+/* ============ LINK DA LOGO R ============ */
+.logo-link {
+    position: absolute; /* IMPORTANTE: posicionamento absoluto */
+    top: 16px; /* Mesma distância do topo */
+    left: 16px; /* Mesma distância da esquerda */
+    z-index: 100; /* Z-index alto para ficar por cima */
+    display: inline-block;
+    text-decoration: none;
+    pointer-events: auto;
+}
+
+.logo-link img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    width: clamp(40px, 7vw, 72px);
+    height: auto;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+}
+
+.logo-link img:hover {
+    transform: scale(1.05);
+}
+
+/* ============ LOGO CENTRAL ============ */
+.logo-container {
+    position: relative;
+    z-index: 5;
+}
+
+.center-image {
+    width: min(70vw, 600px);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.15));
+}
+
+/* ============ HEADER/NAVBAR ============ */
+.headbar-wrap { 
+    position: relative; 
+    z-index: 1000;
+}
+
+.headbar {
+    position: fixed;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    backdrop-filter: none;
+    transition: transform .3s ease, opacity .3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.headbar .nav {
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    padding: 10px 18px;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid var(--divider);
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+    pointer-events: auto;
+}
+
+.headbar a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+.headbar a:hover {
+    background: #00000008;
+    border-color: var(--divider);
+}
+
+.headbar.headbar--solid .nav { 
+    background: rgba(255,255,255,0.92); 
+}
+
+.headbar.headbar--hidden { 
+    transform: translateY(-120%); 
+    opacity: 0; 
+}
+
+/* ============ RESTO DO CSS ============ */
+.anchor-section { scroll-margin-top: 68px; }
+
+.site-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+}
+
+section {
+    width: 100%;
+    padding: 56px 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.04) 100%);
+}
+
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--divider);
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Seções após o hero */
+.section-header {
+    text-align: center;
+    margin-bottom: 26px;
+}
+
+.eyebrow {
+    display: inline-block;
+    color: #4b5563;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border: 1px solid var(--divider);
+    border-radius: 999px;
+    background: rgba(0,0,0,0.03);
+}
+
+.section-title {
+    position: relative;
+    color: var(--text);
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+}
+
+.section-title::before{
+    content: "";
+    display: block;
+    width: 56px;
+    height: 4px;
+    margin: 0 auto 10px;
+    background: linear-gradient(90deg,#111,transparent);
+    opacity: .18;
+    border-radius: 6px;
+}
+
+.section-title::after{
+    content: "";
+    display: block;
+    width: 84px;
+    height: 3px;
+    margin: 10px auto 0;
+    background: linear-gradient(90deg,#111,transparent);
+    opacity: .2;
+}
+
+h2.section-title {
+    color: var(--text);
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+    letter-spacing: 0.3px;
+}
+
+p.lead, p.copy {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+p.lead {
+    font-size: 1.06rem;
+    margin-bottom: 8px;
+}
+
+/* Grid e layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.feature-list {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.feature-list li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    align-items: start;
+    color: var(--muted);
+}
+
+.feature-list .dot {
+    width: 10px;
+    height: 10px;
+    margin-top: 6px;
+    border-radius: 2px;
+    background: #111;
+    opacity: .4;
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+}
+
+.media-card {
+    background: var(--card);
+    border: 1px solid var(--divider);
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+}
+
+.media-card img{ 
+    width:100%; 
+    height:100%; 
+    object-fit: cover; 
+    display:block; 
+}
+
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e5e7eb 20%, #e5e7eb 80%, transparent);
+    margin: 40px 0 10px;
+}
+
+/* Botões e CTAs */
+.cta-bar {
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid var(--divider);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+}
+
+.btn-primary {
+    background: #00000008;
+    color: var(--text);
+    border: 1px solid var(--divider);
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+
+.btn-primary:hover { 
+    background: #00000012; 
+    border-color: #d1d5db; 
+    transform: translateY(-1px); 
+}
+
+.btn-primary.icon-btn { 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+}
+
+.btn-primary .icon { 
+    width: 18px; 
+    height: 18px; 
+    display: inline-block; 
+}
+
+.btn-primary .icon svg { 
+    width: 100%; 
+    height: 100%; 
+    display: block; 
+    fill: currentColor; 
+}
+
+/* Estatísticas */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.stat {
+    background: var(--card);
+    border: 1px solid var(--divider);
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+}
+
+.stat .num { 
+    color: var(--text); 
+    font-size: 1.4rem; 
+    font-weight: 700; 
+}
+
+.stat .sub { 
+    color: var(--muted); 
+    font-size: .9rem; 
+    margin-top: 4px; 
+}
+
+/* Background video */
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* Galeria */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.gallery .img-card {
+    background: var(--card);
+    border: 1px solid var(--divider);
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    position: relative;
+    cursor: zoom-in;
+}
+
+.gallery .img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(1.02) contrast(1.02);
+    transition: transform .45s ease;
+}
+
+.gallery .img-card::after{
+    content: "";
+    position: absolute; 
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.5));
+    opacity: 0; 
+    transition: opacity .35s ease;
+}
+
+.gallery .img-card:hover img { 
+    transform: scale(1.06); 
+}
+
+.gallery .img-card:hover::after { 
+    opacity: 1; 
+}
+
+.gallery .img-card figcaption {
+    position: absolute;
+    left: 12px; 
+    bottom: 10px; 
+    z-index: 1;
+    padding: 6px 10px;
+    font-size: .92rem;
+    color: #ececec;
+    background: rgba(0,0,0,0.42);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+}
+
+.img-card.empty { 
+    border: 1px dashed #2e2e2e;
+    background: linear-gradient(180deg,#0f0f0f,#0b0b0b);
+}
+
+.img-card.empty::after{
+    content: "Adicione imagem em img/gallery-X.jpg";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: #6f6f6f;
+    font-size: 0.95rem;
+}
+
+/* Badges */
+.badges { 
+    display:flex; 
+    flex-wrap:wrap; 
+    gap:10px; 
+    justify-content:center; 
+    margin-top:8px; 
+}
+
+.badge { 
+    color:#374151; 
+    border:1px solid var(--divider); 
+    background: rgba(0,0,0,0.03); 
+    padding:6px 10px; 
+    border-radius:999px; 
+    font-size:.85rem; 
+}
+
+/* Footer */
+/* 1. Corrigir o erro de sintaxe no .site-footer */
+.site-footer {
+    background: rgba(161, 161, 161, 0.203);
+    border-top: 1px solid var(--divider);
+    margin-top: 2px;
+    /* REMOVIDO: position: absolute top 10000px; <- ESTE ERA O PROBLEMA! */
+}
+
+/* 2. Ajustar espaçamentos do footer */
+.foot-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2px;
+    padding: 20px 20px 0 !important;
+}
+
+
+/* 3. Aproximar a linha do conteúdo */
+.foot-base { 
+    padding: 6px 20px 16px; /* Muito menos espaço no topo */
+    color: #6b7280; 
+    border-top: 1px solid var(--divider); 
+    font-size: .92rem; 
+}
+
+.foot-brand .foot-logo { 
+    width: 140px; 
+    height: auto; 
+    opacity: .9; 
+    margin-top: 20px;
+}
+
+.foot-copy { 
+    color: var(--muted); 
+    margin-top: 20px; 
+    margin-right: 10px;
+}
+
+.foot-links { 
+    display: flex; 
+    gap: 12px; 
+    align-items: center; 
+    justify-content: flex-end; 
+}
+
+.foot-links a { 
+    color: #1f2937; 
+    text-decoration: none; 
+    border: 1px solid var(--divider); 
+    padding: 8px 12px; 
+    border-radius: 8px; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 1px; 
+}
+
+.foot-links .icon { 
+    width: 22px; 
+    height: 22px; 
+    display: inline-block; 
+}
+
+.foot-links .icon svg { 
+    width: 100%; 
+    height: 100%; 
+    display: block; 
+    fill: currentColor; 
+}
+
+.foot-links a:hover { 
+    background: #00000008; 
+}
+
+.foot-links a.whatsapp:hover { 
+    color: #25D366; 
+    border-color: #25D36633; 
+}
+
+.foot-links a.instagram:hover { 
+    color: #E1306C; 
+    border-color: #E1306C33; 
+}
+
+.foot-links a.email:hover { 
+    color: #2563eb; 
+    border-color: #93c5fd; 
+}
+
+.foot-base { 
+    padding: 10px 20px 24px; 
+    color: #6b7280; 
+    border-top: 20px solid var(--divider); 
+    font-size: .92rem; 
+    margin-left: -20px;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============ MEDIA QUERIES ============ */
+@media (max-width: 820px){
+    .grid-2 { 
+        grid-template-columns: 1fr; 
+    }
+    .stats { 
+        grid-template-columns: 1fr 1fr; 
+    }
+    .headbar .nav { 
+        gap: 10px; 
+        flex-wrap: wrap; 
+    }
+    .headbar a { 
+        padding: 8px; 
+        font-size: .95rem; 
+    }
+    .foot-grid { 
+        grid-template-columns: 1fr; 
+    }
+    .foot-links { 
+        justify-content: flex-start; 
+        flex-wrap: wrap; 
+    }
+}

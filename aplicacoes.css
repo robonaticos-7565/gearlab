@@ -1,0 +1,490 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Paleta de cores */
+:root {
+    --bg: #ffffff;
+    --bg-elev: #f9fafb;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #4b5563;
+    --divider: #e5e7eb;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+/* ============ HERO SECTION ============ */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url(./img/54338737840_37b4bcb860_o.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-family: Arial;
+    font-size: 4.3rem;
+    opacity: 0.6;
+    margin-bottom: 0rem;
+    font-weight: 900;
+    color: hsl(0, 0%, 0%); 
+    background: #00000000;
+    -webkit-text-stroke: 1px #000000;
+}
+
+.hero p {
+    font-family: Agency FB;
+    font-size: 1.7rem;
+    opacity: 0.6;
+    max-width: 900px;
+    margin: auto;
+    color: rgba(0,0,0,1);
+    background: #00000000;
+    -webkit-text-stroke: 1px #000000;
+}
+
+/* ============ SEÇÃO DE CONTEÚDO BRANCA ============ */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.section-title::before{
+    content: "";
+    display: block;
+    width: 56px;
+    height: 4px;
+    margin: 0 auto 10px;
+    background: linear-gradient(90deg,#111,transparent);
+    opacity: .18;
+    border-radius: 6px;
+}
+
+.section-title::after{
+    content: "";
+    display: block;
+    width: 84px;
+    height: 3px;
+    margin: 10px auto 0;
+    background: linear-gradient(90deg,#111,transparent);
+    opacity: .2;
+    letter-spacing: 0,2em;
+}
+.eyebrow {
+    display: inline-block;
+    color: #4b5563;
+    font-size: 1.15rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border: 0px solid var(--divider);
+    border-radius: 999px;
+    background: rgba(0,0,0,0.03);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Texto descritivo na área branca */
+.section-description{
+    font-size: 1.7rem;
+    color: #000000;
+    max-width: 900px;
+    margin: 0rem auto 0;
+    text-align: center;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.lead {
+    font-size: 1.3rem;
+    color: #000000;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* ============ HEADER/NAVBAR ============ */
+.headbar-wrap { 
+    position: relative; 
+    z-index: 1000;
+}
+
+.headbar {
+    position: fixed;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    backdrop-filter: none;
+    transition: transform .3s ease, opacity .3s ease;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.headbar .nav {
+    width: fit-content;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    padding: 10px 18px;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid var(--divider);
+    border-radius: 14px;
+    backdrop-filter: blur(6px);
+    pointer-events: auto;
+}
+
+.headbar a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+}
+
+.headbar a:hover {
+    background: #00000008;
+    border-color: var(--divider);
+}
+
+.headbar.headbar--solid .nav { 
+    background: rgba(255,255,255,0.92); 
+}
+
+.headbar.headbar--hidden { 
+    transform: translateY(-120%); 
+    opacity: 0; 
+}
+
+/* ============ LOGOS DOS CANTOS ============ */
+.corner-logo {
+    position: absolute;
+    top: 16px;
+    width: clamp(40px, 7vw, 72px);
+    height: auto;
+    z-index: 100;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+    user-select: none;
+}
+
+.logo-left {
+    left: 16px;
+}
+
+.logo-right {
+    right: 16px;
+    top: -16px !important
+    ;width: clamp(56px, 9vw, 112px);
+}
+
+/* ============ LINKS DAS LOGOS ============ */
+.logo-link, .logo-link-right {
+    position: absolute;
+    top: 16px;
+    z-index: 100;
+    display: inline-block;
+    text-decoration: none;
+    pointer-events: auto;
+}
+
+.logo-link {
+    left: 16px;
+}
+
+.logo-link-right {
+    right: 16px;
+}
+
+.logo-link img, .logo-link-right img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+}
+
+.logo-link img {
+    width: clamp(40px, 7vw, 72px);
+    height: auto;
+}
+
+.logo-link-right img {
+    width: clamp(56px, 9vw, 112px);
+    height: auto;
+}
+
+.logo-link img:hover, .logo-link-right img:hover {
+    transform: scale(1.05);
+}
+
+/* ============ APPLICATIONS GRID ============ */
+.applications-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 450px)); /* 2 colunas com largura limitada */
+    gap: 2rem;
+    margin: 2rem 0;
+    position: relative;
+    z-index: 10;
+    justify-content: center;
+}
+
+/* Application Cards - VERSÃO MAIS FINA */
+.application-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: auto; /* Permite que o card se ajuste ao conteúdo */
+}
+
+.application-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.card-image {
+    width: 100%;
+    height: 280px; /* Altura original mantida */
+    object-fit: fill; /* Voltei para fill para manter proporção original */
+    display: block;
+    transition: transform 0.3s;
+}
+
+.application-card:hover .card-image {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 0.75rem; /* Voltei para o padding original */
+}
+
+.card-title {
+    font-size: 1.25rem; /* Voltei para o tamanho original */
+    margin-bottom: 0.4rem;
+    color: #000000;
+    font-weight: 600;
+}
+
+.card-description {
+    color: #666666;
+    margin-bottom: 1rem; /* Voltei para o original */
+    line-height: 1.5;
+    font-size: 0.9rem; /* Tamanho original */
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem; /* Voltei para o original */
+    margin-bottom: 1rem; /* Voltei para o original */
+}
+
+.tag {
+    background: #f7c11e33;
+    color: #996f00;
+    padding: 0.25rem 0.6rem; /* Voltei para o original */
+    border-radius: 20px;
+    font-size: 0.75rem; /* Tamanho original */
+    font-weight: 500;
+}
+
+.card-link {
+    display: inline-block;
+    background: #f7c11e;
+    color: #000000;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem; /* Voltei para o original */
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem; /* Tamanho original */
+    transition: all 0.3s ease;
+}
+
+.card-link:hover {
+    background: #e6af1a;
+    transform: translateY(-2px);
+}
+
+/* Footer */
+/* 1. Corrigir o erro de sintaxe no .site-footer */
+.site-footer {
+    background: rgba(161, 161, 161, 0.203);
+    border-top: 1px solid var(--divider);
+    margin-top: 2px;
+    /* REMOVIDO: position: absolute top 10000px; <- ESTE ERA O PROBLEMA! */
+}
+
+/* 2. Ajustar espaçamentos do footer */
+.foot-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2px;
+    padding: 20px 20px 0 !important;
+}
+
+
+/* 3. Aproximar a linha do conteúdo */
+.foot-base { 
+    padding: 6px 20px 16px; /* Muito menos espaço no topo */
+    color: #6b7280; 
+    border-top: 1px solid var(--divider); 
+    font-size: .92rem; 
+}
+
+.foot-brand .foot-logo { 
+    width: 140px; 
+    height: auto; 
+    opacity: .9; 
+}
+
+.foot-copy { 
+    color: var(--muted); 
+    margin-top: 8px; 
+}
+
+.foot-links { 
+    display: flex; 
+    gap: 12px; 
+    align-items: center; 
+    justify-content: flex-end; 
+}
+
+.foot-links a { 
+    color: #1f2937; 
+    text-decoration: none; 
+    border: 1px solid var(--divider); 
+    padding: 8px 12px; 
+    border-radius: 8px; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 1px; 
+}
+
+.foot-links .icon { 
+    width: 22px; 
+    height: 22px; 
+    display: inline-block; 
+}
+
+.foot-links .icon svg { 
+    width: 100%; 
+    height: 100%; 
+    display: block; 
+    fill: currentColor; 
+}
+
+.foot-links a:hover { 
+    background: #00000008; 
+}
+
+.foot-links a.whatsapp:hover { 
+    color: #25D366; 
+    border-color: #25D36633; 
+}
+
+.foot-links a.instagram:hover { 
+    color: #E1306C; 
+    border-color: #E1306C33; 
+}
+
+.foot-links a.email:hover { 
+    color: #2563eb; 
+    border-color: #93c5fd; 
+}
+
+.foot-base { 
+    padding: 10px 20px 24px; 
+    color: #6b7280; 
+    border-top: 1px solid var(--divider); 
+    font-size: .92rem; 
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.lightbox .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============ MEDIA QUERIES ============ */
+@media (max-width: 820px){
+    .grid-2 { 
+        grid-template-columns: 1fr; 
+    }
+    .stats { 
+        grid-template-columns: 1fr 1fr; 
+    }
+    .headbar .nav { 
+        gap: 10px; 
+        flex-wrap: wrap; 
+    }
+    .headbar a { 
+        padding: 8px; 
+        font-size: .95rem; 
+    }
+    .foot-grid { 
+        grid-template-columns: 1fr; 
+    }
+    .foot-links { 
+        justify-content: flex-start; 
+        flex-wrap: wrap; 
+    }
+}
