@@ -24,57 +24,97 @@ body {
     padding: 0 20px;
 }
 
-/* -------- HEADBAR -------- */
-.headbar-wrap {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background: transparent;
-    pointer-events: none;
-}
-.headbar {
+/* ============ HERO SECTION ============ */
+.hero-section {
     position: relative;
+    width: 100%;
+    height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 14px 0;
+    justify-content: center;
+    background-color: #f7c11e;
+    overflow: hidden;
+}
+
+.hero-section img {
+    max-width: 90%;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    opacity: 1;
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Ajustar o conteúdo após o hero */
+.site-content {
+    padding-top: 0; /* Remove o padding anterior */
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .hero-section img {
+        max-width: 95%;
+    }
+}
+
+/* ============ HEADER/NAVBAR ============ */
+.headbar-wrap { 
+    position: relative; 
+    z-index: 1000;
+}
+
+.headbar {
+    position: fixed;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    background: transparent;
+    backdrop-filter: none;
+    transition: transform .3s ease, opacity .3s ease;
+    z-index: 1000;
     pointer-events: none;
 }
+
 .headbar .nav {
-    pointer-events: auto;
+    width: fit-content;
+    margin: 0 auto;
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 22px;
     padding: 10px 18px;
-    background: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.72);
     border: 1px solid var(--divider);
     border-radius: 14px;
     backdrop-filter: blur(6px);
-    width: fit-content;
-    margin: 0 auto;
+    pointer-events: auto;
 }
+
 .headbar a {
     color: var(--text);
     text-decoration: none;
-    padding: 8px 12px;
+    padding: 8px 10px;
     border-radius: 8px;
     border: 1px solid transparent;
-    transition: background .18s ease, border-color .18s ease, transform .12s ease;
-    font-weight: 600;
-    font-size: 0.95rem;
 }
+
 .headbar a:hover {
-    background: #00000006;
+    background: #00000008;
     border-color: var(--divider);
-    transform: translateY(-1px);
 }
-.headbar .nav a.active {
-    background: #00000012;
-    border-color: #d1d5db;
+
+.headbar.headbar--solid .nav { 
+    background: rgba(255,255,255,0.92); 
 }
-.headbar.headbar--solid .nav { background: rgba(255,255,255,0.96); }
-.headbar.headbar--hidden { transform: translateY(-120%); opacity: 0; }
+
+.headbar.headbar--hidden { 
+    transform: translateY(-120%); 
+    opacity: 0; 
+}
+
 
 /* Garante espaço visual */
 .site-content {
@@ -222,15 +262,6 @@ body {
 .btn-primary { background: var(--accent); color: #333; padding: 10px 18px; border-radius: 10px; text-decoration: none; font-weight: 700; display: inline-flex; gap: 8px; align-items: center; }
 .btn-primary:hover { background: #e6b01a; transform: translateY(-2px); }
 
-/* Footer */
-.site-footer { background: var(--card); border-top: 1px solid var(--divider); padding: 36px 0 20px; margin-top: 40px; }
-.foot-grid { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; margin-bottom: 18px; }
-.foot-brand { display:flex; align-items:center; gap:12px; }
-.foot-logo { height:40px; width:auto; }
-.foot-copy { color: var(--muted); font-size: .95rem; }
-.foot-links { display:flex; gap: 12px; }
-.foot-links a { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:50%; background:#f3f4f6; color: var(--text); text-decoration:none; }
-.foot-base { text-align:center; padding-top: 10px; color: var(--muted); border-top: 1px solid var(--divider); font-size: .9rem; }
 
 /* --------- Responsividade --------- */
 @media (max-width: 820px) {
@@ -259,25 +290,26 @@ body {
 /* Footer */
 /* 1. Corrigir o erro de sintaxe no .site-footer */
 .site-footer {
-    background: rgba(161, 161, 161, 0.203);
-    border-top: 1px solid var(--divider);
+    background: #E5E7EB;
+    border-top: 50px solid var(--divider);
     margin-top: 2px;
     /* REMOVIDO: position: absolute top 10000px; <- ESTE ERA O PROBLEMA! */
 }
 
 /* 2. Ajustar espaçamentos do footer */
 .foot-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 2px;
-    padding: 20px 20px 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 30px 20px !important;
 }
 
 
 /* 3. Aproximar a linha do conteúdo */
 .foot-base { 
     padding: 6px 20px 16px; /* Muito menos espaço no topo */
-    color: #6b7280; 
+    color: #E5E7EB; 
     border-top: 1px solid var(--divider); 
     font-size: .92rem; 
 }
@@ -286,32 +318,36 @@ body {
     width: 140px; 
     height: auto; 
     opacity: .9; 
+    margin-bottom: 12px;
 }
 
 .foot-copy { 
     color: var(--muted); 
-    margin-top: -15px; 
-    padding-top: 0px;
-    margin-left: 52px;
-    
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
 }
 
 .foot-links { 
     display: flex; 
-    gap: 12px; 
+    gap: 16px; 
     align-items: center; 
-    justify-content: flex-end; 
+    justify-content: center; 
 }
 
 .foot-links a { 
     color: #1f2937; 
     text-decoration: none; 
     border: 1px solid var(--divider); 
-    padding: 8px 12px; 
-    border-radius: 8px; 
+    padding: 10px 12px; 
+    border-radius: 10px; 
     display: inline-flex; 
     align-items: center; 
-    gap: 1px; 
+    justify-content: center;
+    gap: 6px;
+    background: var(--card);
+    transition: all 0.2s ease;
 }
 
 .foot-links .icon { 
@@ -347,52 +383,11 @@ body {
 }
 
 .foot-base { 
-    padding: 0px 0px 4px; 
-    color: #0055ff; 
+    padding: 16px 20px 20px; 
+    color: #6b7280; 
     border-top: 1px solid var(--divider); 
-    font-size: .92rem; 
-    margin-right: 1000px;
-}
-
-/* Lightbox */
-.lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.lightbox.open {
-    opacity: 1;
-    visibility: visible;
-}
-
-.lightbox img {
-    max-width: 90vw;
-    max-height: 90vh;
-    object-fit: contain;
-}
-
-.lightbox .close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255,255,255,0.9);
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 24px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: .92rem;
+    text-align: center;
 }
 
 /* ============ MEDIA QUERIES ============ */
@@ -413,6 +408,7 @@ body {
     }
     .foot-grid { 
         grid-template-columns: 1fr; 
+        gap: 16px;
     }
     .foot-links { 
         justify-content: flex-start; 
