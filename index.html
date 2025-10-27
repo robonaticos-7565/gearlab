@@ -5,20 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GearUP</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .lang-toggle {
+            display: flex;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 4px;
+            margin-left: auto;
+        }
+        
+        .lang-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 50px;
+            background: transparent;
+            color: rgba(0, 0, 0, 0.404);
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.354);
+            color: #f7c11e;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        [data-lang]:not([data-lang="pt"]) {
+            display: none;
+        }
+
+        body[data-current-lang="en"] [data-lang="pt"],
+        body[data-current-lang="en"] [data-lang="es"] {
+            display: none;
+        }
+
+        body[data-current-lang="en"] [data-lang="en"] {
+            display: block;
+        }
+
+        body[data-current-lang="es"] [data-lang="pt"],
+        body[data-current-lang="es"] [data-lang="en"] {
+            display: none;
+        }
+
+        body[data-current-lang="es"] [data-lang="es"] {
+            display: block;
+        }
+
+        body[data-current-lang="en"] .feature-list [data-lang="en"],
+        body[data-current-lang="en"] .badges [data-lang="en"],
+        body[data-current-lang="pt"] .feature-list [data-lang="pt"],
+        body[data-current-lang="pt"] .badges [data-lang="pt"],
+        body[data-current-lang="es"] .feature-list [data-lang="es"],
+        body[data-current-lang="es"] .badges [data-lang="es"] {
+            display: flex;
+        }
+    </style>
 </head>
-<body>
+<body data-current-lang="pt">
     <section class="hero">
         <div class="hands"></div>
         
-        <a href="https://www.robonaticos7565.com/"
-    position: relative !important;
-    z-index: 1000 !important;
-    display: inline-block !important;
-    pointer-events: auto !important;
- logo-left {
-    pointer-events: auto !important;
-    cursor: pointer !important;
-} target="_blank" rel="noopener noreferrer" class="logo-link">
+        <a href="https://www.robonaticos7565.com/" target="_blank" rel="noopener noreferrer" class="logo-link">
             <img class="corner-logo logo-left" src="./img/2.png" alt="Logo Robonáticos">
         </a>
         
@@ -30,14 +94,41 @@
             <img class="center-image" src="./img/1.png" alt="GearUP">
         </div>
     </section>
+    
     <div class="headbar-wrap">
         <nav class="headbar">
             <div class="nav">
-                <a href="#intro">Introdução</a>
-                <a href="modulos.html">Módulos</a>
-                <a href="aplicacoes.html">Aplicações</a>
-                <a href="#contato">Contate‑nos</a>
-                <a href="agradecimentos.html">Agradecimentos</a>
+                <a href="#intro" data-lang="pt">Introdução</a>
+                <a href="#intro" data-lang="en">Introduction</a>
+                <a href="#intro" data-lang="es">Introducción</a>
+                
+                <a href="modulos.html" data-lang="pt">Módulos</a>
+                <a href="modulos.html" data-lang="en">Modules</a>
+                <a href="modulos.html" data-lang="es">Módulos</a>
+                
+                <a href="aplicacoes.html" data-lang="pt">Aplicações</a>
+                <a href="aplicacoes.html" data-lang="en">Applications</a>
+                <a href="aplicacoes.html" data-lang="es">Aplicaciones</a>
+                
+                <a href="#contato" data-lang="pt">Contate‑nos</a>
+                <a href="#contato" data-lang="en">Contact Us</a>
+                <a href="#contato" data-lang="es">Contáctenos</a>
+                
+                <a href="agradecimentos.html" data-lang="pt">Agradecimentos</a>
+                <a href="agradecimentos.html" data-lang="en">Acknowledgments</a>
+                <a href="agradecimentos.html" data-lang="es">Agradecimientos</a>
+                
+                <div class="lang-toggle">
+                    <button class="lang-btn active" data-lang-btn="pt" onclick="switchLanguage('pt')">
+                        <img src="./img/Flag_of_Brazil.svg.png" alt="Brasil" style="width: 16px; height: 12px; object-fit: cover;">
+                    </button>
+                    <button class="lang-btn" data-lang-btn="en" onclick="switchLanguage('en')">
+                        <img src="./img/Flag_of_the_United_States_(DDD-F-416E_specifications).svg.png" alt="United States" style="width: 20px; height: 15px; object-fit: contain;">
+                    </button>
+                    <button class="lang-btn" data-lang-btn="es" onclick="switchLanguage('es')">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg" alt="España" style="width: 20px; height: 13px; object-fit: contain;">
+                    </button>
+                </div>
             </div>
         </nav>
     </div>
@@ -46,27 +137,55 @@
         <section id="intro" class="anchor-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="eyebrow">Programa socioeducativo</span>
-                    <h2 class="section-title">Sobre o Gear Up</h2>
+                    <span class="eyebrow" data-lang="pt"><span class="eyebrow-text">Programa socioeducativo</span></span>
+                    <span class="eyebrow" data-lang="en"><span class="eyebrow-text">Social-educational program</span></span>
+                    <span class="eyebrow" data-lang="es"><span class="eyebrow-text">Programa socioeducativo</span></span>
+                    
+                    <h2 class="section-title" data-lang="pt">Sobre o Gear Up</h2>
+                    <h2 class="section-title" data-lang="en">About Gear Up</h2>
+                    <h2 class="section-title" data-lang="es">Acerca de Gear Up</h2>
                 </div>
                 <div class="card grid-2">
-                    <p class="lead">O Gear Up é um programa educacional que busca tornar as áreas de STEAM (Ciência, Tecnologia, Engenharia, Artes e Matemática) mais acessíveis e atrativas. Ele oferece um manual com mais de 10 projetos de baixo custo, com o objetivo de disseminar o conhecimento nessas áreas para jovens, especialmente em escolas públicas, e, assim, ampliar seus horizontes e oportunidades.</p>
+                    <p class="lead" data-lang="pt">O Gear Up é um programa educacional que busca tornar as áreas de STEAM (Ciência, Tecnologia, Engenharia, Artes e Matemática) mais acessíveis e atrativas. Ele oferece um manual com mais de 10 projetos de baixo custo, com o objetivo de disseminar o conhecimento nessas áreas para jovens, especialmente em escolas públicas, e, assim, ampliar seus horizontes e oportunidades.</p>
+                    <p class="lead" data-lang="en">Gear Up is an educational program that seeks to make STEAM areas (Science, Technology, Engineering, Arts and Mathematics) more accessible and attractive. It offers a manual with over 10 low-cost projects, aiming to spread knowledge in these areas to young people, especially in public schools, thereby expanding their horizons and opportunities.</p>
+                    <p class="lead" data-lang="es">Gear Up es un programa educativo que busca hacer las áreas STEAM (Ciencia, Tecnología, Ingeniería, Artes y Matemáticas) más accesibles y atractivas. Ofrece un manual con más de 10 proyectos de bajo costo, con el objetivo de difundir el conocimiento en estas áreas a los jóvenes, especialmente en escuelas públicas, ampliando así sus horizontes y oportunidades.</p>
+                    
                     <div>
                         <div class="media-card"><img src="./img/IMG_6820.JPG" alt="Atividades do Gear Up"></div>
                         <div class="badges">
-                            <span class="badge">STEAM</span>
-                            <span class="badge">Baixo custo</span>
-                            <span class="badge">Aprender fazendo</span>
-                            <span class="badge">Para escolas públicas</span>
+                            <span class="badge" data-lang="pt">STEAM</span>
+                            <span class="badge" data-lang="pt">Baixo custo</span>
+                            <span class="badge" data-lang="pt">Aprender fazendo</span>
+                            <span class="badge" data-lang="pt">Para escolas públicas</span>
+                            
+                            <span class="badge" data-lang="en">STEAM</span>
+                            <span class="badge" data-lang="en">Low cost</span>
+                            <span class="badge" data-lang="en">Learning by doing</span>
+                            <span class="badge" data-lang="en">For public schools</span>
+
+                            <span class="badge" data-lang="es">STEAM</span>
+                            <span class="badge" data-lang="es">Bajo costo</span>
+                            <span class="badge" data-lang="es">Aprender haciendo</span>
+                            <span class="badge" data-lang="es">Para escuelas públicas</span>
                         </div>
                     </div>
                 </div>
                 <div class="card" style="margin-top:16px;">
                     <ul class="feature-list">
-                        <li><span class="dot"></span><span>Mais de 10 projetos de baixo custo, ideais para escolas públicas.</span></li>
-                        <li><span class="dot"></span><span>Material alinhado às áreas de STEAM com aprendizagem prática.</span></li>
-                        <li><span class="dot"></span><span>Manual aplicável de forma autônoma pelos professores.</span></li>
-                        <li><span class="dot"></span><span>Projetos pensados para ampliar horizontes e oportunidades dos jovens.</span></li>
+                        <li data-lang="pt"><span class="dot"></span><span>Mais de 10 projetos de baixo custo, ideais para escolas públicas.</span></li>
+                        <li data-lang="pt"><span class="dot"></span><span>Material alinhado às áreas de STEAM com aprendizagem prática.</span></li>
+                        <li data-lang="pt"><span class="dot"></span><span>Manual aplicável de forma autônoma pelos professores.</span></li>
+                        <li data-lang="pt"><span class="dot"></span><span>Projetos pensados para ampliar horizontes e oportunidades dos jovens.</span></li>
+                        
+                        <li data-lang="en"><span class="dot"></span><span>Over 10 low-cost projects, ideal for public schools.</span></li>
+                        <li data-lang="en"><span class="dot"></span><span>Material aligned with STEAM areas with practical learning.</span></li>
+                        <li data-lang="en"><span class="dot"></span><span>Manual that can be applied autonomously by teachers.</span></li>
+                        <li data-lang="en"><span class="dot"></span><span>Projects designed to expand young people's horizons and opportunities.</span></li>
+
+                        <li data-lang="es"><span class="dot"></span><span>Más de 10 proyectos de bajo costo, ideales para escuelas públicas.</span></li>
+                        <li data-lang="es"><span class="dot"></span><span>Material alineado con las áreas STEAM con aprendizaje práctico.</span></li>
+                        <li data-lang="es"><span class="dot"></span><span>Manual aplicable de forma autónoma por los profesores.</span></li>
+                        <li data-lang="es"><span class="dot"></span><span>Proyectos diseñados para ampliar horizontes y oportunidades de los jóvenes.</span></li>
                     </ul>
                 </div>
             </div>
@@ -75,22 +194,33 @@
         <section id="modulos" class="anchor-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="eyebrow">Aplicação em sala</span>
-                    <h2 class="section-title">Como aplicamos nas escolas</h2>
+                    <span class="eyebrow" data-lang="pt"><span class="eyebrow-text">Aplicação em sala</span></span>
+                    <span class="eyebrow" data-lang="en"><span class="eyebrow-text">Classroom Application</span></span>
+                    <span class="eyebrow" data-lang="es"><span class="eyebrow-text">Aplicación en el aula</span></span>
+                    
+                    <h2 class="section-title" data-lang="pt">Como Aplicamos nas Escolas</h2>
+                    <h2 class="section-title" data-lang="en">How We Apply in Schools</h2>
+                    <h2 class="section-title" data-lang="es">Cómo aplicamos en las escuelas</h2>
                 </div>
                 <div class="card">
-                    <p class="lead">Nossa intenção inicial era introduzir os alunos no universo da robótica e das novas tecnologias. Para isso, criamos projetos práticos que pudessem ser integrados ao currículo escolar, combinando aulas teóricas e práticas para enriquecer o aprendizado. Com o tempo e a inspiração trazida pelo Robô movido a luz, desenvolvemos um manual socioeducativo.</p>
-                    <p class="copy">Todo o material segue as normas da ABNT e cada projeto cumpre pelo menos cinco objetivos da Base Nacional Comum Curricular (BNCC), permitindo sua aplicação em diversas disciplinas. O manual foi pensado para uso autônomo em sala, dando liberdade aos professores para explorar criativamente as atividades.</p>
+                    <p class="lead" data-lang="pt">Nossa intenção inicial era introduzir os alunos no universo da robótica e das novas tecnologias. Para isso, criamos projetos práticos que pudessem ser integrados ao currículo escolar, combinando aulas teóricas e práticas para enriquecer o aprendizado. Com o tempo e a inspiração trazida pelo Robô movido a luz, desenvolvemos um manual socioeducativo.</p>
+                    <p class="lead" data-lang="en">Our initial intention was to introduce students to the world of robotics and new technologies. To achieve this, we created practical projects that could be integrated into the school curriculum, combining theoretical and practical classes to enrich learning. Over time and inspired by the Light-Powered Robot, we developed a social-educational manual.</p>
+                    <p class="lead" data-lang="es">Nuestra intención inicial era introducir a los estudiantes en el universo de la robótica y las nuevas tecnologías. Para ello, creamos proyectos prácticos que pudieran integrarse al currículo escolar, combinando clases teóricas y prácticas para enriquecer el aprendizaje. Con el tiempo y la inspiración del Robot impulsado por luz, desarrollamos un manual socioeducativo.</p>
+                    
+                    <p class="copy" data-lang="pt">Todo o material segue as normas da ABNT e cada projeto cumpre pelo menos cinco objetivos da Base Nacional Comum Curricular (BNCC), permitindo sua aplicação em diversas disciplinas. O manual foi pensado para uso autônomo em sala, dando liberdade aos professores para explorar criativamente as atividades.</p>
+                    <p class="copy" data-lang="en">All material follows ABNT standards and each project meets at least five objectives of the National Common Curricular Base (BNCC), allowing its application in various disciplines. The manual was designed for autonomous classroom use, giving teachers freedom to creatively explore the activities.</p>
+                    <p class="copy" data-lang="es">Todo el material sigue las normas ABNT y cada proyecto cumple con al menos cinco objetivos de la Base Nacional Común Curricular (BNCC), permitiendo su aplicación en diversas disciplinas. El manual fue diseñado para uso autónomo en el aula, dando libertad a los profesores para explorar creativamente las actividades.</p>
 
                     <div class="gallery" id="gallery">
-                        <!-- Troque os src abaixo pelas fotos desejadas -->
-                        <figure class="img-card"><img src="./img/IMG_0602 (1).jpg" alt="Estudantes em sala"><figcaption>Aprendizado em sala</figcaption></figure>
-                        <figure class="img-card"><img src="./img/IMG_2077.JPG" alt="Turma reunida"><figcaption>Turmas engajadas</figcaption></figure>
-                        <figure class="img-card"><img src="./img/IMG_4222.jpg" alt="Oficina prática"><figcaption>Oficinas práticas</figcaption></figure>
-                        <figure class="img-card"><img src="./img/54337413337_f82556aaa4_o.jpg" alt="Demonstração de robô"><figcaption>Projetos em ação</figcaption></figure>
+                        <figure class="img-card"><img src="./img/IMG_0602 (1).jpg" alt="Estudantes em sala"><figcaption data-lang="pt">Aprendizado em sala</figcaption><figcaption data-lang="en">Classroom Learning</figcaption><figcaption data-lang="es">Aprendizaje en el aula</figcaption></figure>
+                        <figure class="img-card"><img src="./img/IMG_2077.JPG" alt="Turma reunida"><figcaption data-lang="pt">Turmas engajadas</figcaption><figcaption data-lang="en">Engaged Classes</figcaption><figcaption data-lang="es">Clases comprometidas</figcaption></figure>
+                        <figure class="img-card"><img src="./img/IMG_4222.jpg" alt="Oficina prática"><figcaption data-lang="pt">Oficinas práticas</figcaption><figcaption data-lang="en">Practical Workshops</figcaption><figcaption data-lang="es">Talleres prácticos</figcaption></figure>
+                        <figure class="img-card"><img src="./img/54337413337_f82556aaa4_o.jpg" alt="Demonstração de robô"><figcaption data-lang="pt">Projetos em ação</figcaption><figcaption data-lang="en">Projects in Action</figcaption><figcaption data-lang="es">Proyectos en acción</figcaption></figure>
                     </div>
                     <div class="divider"></div>
-                    <p class="copy" style="margin-top:6px;">Para superar o alto custo e o baixo engajamento, criamos em 2019 o <strong>Robô Movido a Luz</strong>: um kit que custa apenas $2.80 Dólares e pode ser montado inteiramente pelos alunos, oferecendo uma experiência prática e envolvente.</p>
+                    <p class="copy" style="margin-top:6px;" data-lang="pt">Para superar o alto custo e o baixo engajamento, criamos em 2019 o <strong>Robô Movido a Luz</strong>: um kit que custa apenas $2.80 Dólares e pode ser montado inteiramente pelos alunos, oferecendo uma experiência prática e envolvente.</p>
+                    <p class="copy" style="margin-top:6px;" data-lang="en">To overcome high costs and low engagement, we created in 2019 the <strong>Light-Powered Robot</strong>: a kit that costs only $2.80 USD and can be assembled entirely by students, offering a practical and engaging experience.</p>
+                    <p class="copy" style="margin-top:6px;" data-lang="es">Para superar el alto costo y el bajo compromiso, creamos en 2019 el <strong>Robot Impulsado por Luz</strong>: un kit que cuesta solo $2.80 USD y puede ser ensamblado completamente por los estudiantes, ofreciendo una experiencia práctica y atractiva.</p>
                 </div>
             </div>
         </section>
@@ -98,54 +228,109 @@
         <section id="aplicacoes" class="anchor-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="eyebrow">Projetos práticos</span>
-                    <h2 class="section-title">Aplicações do Gear Up</h2>
+                    <span class="eyebrow" data-lang="pt"><span class="eyebrow-text">Projetos práticos</span></span>
+                    <span class="eyebrow" data-lang="en"><span class="eyebrow-text">Practical Projects</span></span>
+                    <span class="eyebrow" data-lang="es"><span class="eyebrow-text">Proyectos prácticos</span></span>
+                    
+                    <h2 class="section-title" data-lang="pt">Aplicações do Gear Up</h2>
+                    <h2 class="section-title" data-lang="en">Gear Up Applications</h2>
+                    <h2 class="section-title" data-lang="es">Aplicaciones de Gear Up</h2>
                 </div>
                 <div class="card">
-                    <p class="lead">O manual Gear Up oferece uma variedade de projetos práticos que podem ser aplicados em diferentes contextos educacionais, sempre priorizando materiais de baixo custo e fácil acesso.</p>
+                    <p class="lead" data-lang="pt">O manual Gear Up oferece uma variedade de projetos práticos que podem ser aplicados em diferentes contextos educacionais, sempre priorizando materiais de baixo custo e fácil acesso.</p>
+                    <p class="lead" data-lang="en">The Gear Up manual offers a variety of practical projects that can be applied in different educational contexts, always prioritizing low-cost and easily accessible materials.</p>
+                    <p class="lead" data-lang="es">El manual Gear Up ofrece una variedad de proyectos prácticos que pueden aplicarse en diferentes contextos educativos, priorizando siempre materiales de bajo costo y fácil acceso.</p>
                     
                     <div class="grid-2" style="margin-top: 20px;">
                         <div>
-                            <h3 style="color: var(--text); margin-bottom: 12px;">Projetos Destacados</h3>
+                            <h3 style="color: var(--text); margin-bottom: 12px;" data-lang="pt">Projetos Destacados</h3>
+                            <h3 style="color: var(--text); margin-bottom: 12px;" data-lang="en">Featured Projects</h3>
+                            <h3 style="color: var(--text); margin-bottom: 12px;" data-lang="es">Proyectos Destacados</h3>
+                            
                             <ul class="feature-list">
-                                <li><span class="dot"></span><span><strong>Robô Movido a Luz</strong> - Projeto principal que custa apenas $2,80 USD e ensina conceitos de robótica e energia solar.</span></li>
-                                <li><span class="dot"></span><span><strong>Sistemas de Automação</strong> - Projetos que introduzem conceitos de programação e controle automatizado.</span></li>
-                                <li><span class="dot"></span><span><strong>Experimentos de Física</strong> - Demonstrações práticas de conceitos físicos usando materiais do dia a dia.</span></li>
-                                <li><span class="dot"></span><span><strong>Projetos de Matemática Aplicada</strong> - Atividades que conectam teoria matemática com aplicações reais.</span></li>
+                                <li data-lang="pt"><span class="dot"></span><span><strong>Robô Movido a Luz</strong> - Projeto principal que custa apenas $2,80 USD e ensina conceitos de robótica e energia solar.</span></li>
+                                <li data-lang="pt"><span class="dot"></span><span><strong>Sistemas de Automação</strong> - Projetos que introduzem conceitos de programação e controle automatizado.</span></li>
+                                <li data-lang="pt"><span class="dot"></span><span><strong>Experimentos de Física</strong> - Demonstrações práticas de conceitos físicos usando materiais do dia a dia.</span></li>
+                                <li data-lang="pt"><span class="dot"></span><span><strong>Projetos de Matemática Aplicada</strong> - Atividades que conectam teoria matemática com aplicações reais.</span></li>
+                                
+                                <li data-lang="en"><span class="dot"></span><span><strong>Light-Powered Robot</strong> - Main project that costs only $2.80 USD and teaches robotics and solar energy concepts.</span></li>
+                                <li data-lang="en"><span class="dot"></span><span><strong>Automation Systems</strong> - Projects that introduce programming and automated control concepts.</span></li>
+                                <li data-lang="en"><span class="dot"></span><span><strong>Physics Experiments</strong> - Practical demonstrations of physical concepts using everyday materials.</span></li>
+                                <li data-lang="en"><span class="dot"></span><span><strong>Applied Mathematics Projects</strong> - Activities that connect mathematical theory with real applications.</span></li>
+
+                                <li data-lang="es"><span class="dot"></span><span><strong>Robot Impulsado por Luz</strong> - Proyecto principal que cuesta solo $2.80 USD y enseña conceptos de robótica y energía solar.</span></li>
+                                <li data-lang="es"><span class="dot"></span><span><strong>Sistemas de Automatización</strong> - Proyectos que introducen conceptos de programación y control automatizado.</span></li>
+                                <li data-lang="es"><span class="dot"></span><span><strong>Experimentos de Física</strong> - Demostraciones prácticas de conceptos físicos usando materiales cotidianos.</span></li>
+                                <li data-lang="es"><span class="dot"></span><span><strong>Proyectos de Matemáticas Aplicadas</strong> - Actividades que conectan la teoría matemática con aplicaciones reales.</span></li>
                             </ul>
                         </div>
                         <div>
                             <div class="media-card"><img src="./img/IMG_4333.jpg" alt="Aplicações práticas"></div>
                             <div class="badges" style="margin-top: 12px;">
-                                <span class="badge">Robótica</span>
-                                <span class="badge">Automação</span>
-                                <span class="badge">Física</span>
-                                <span class="badge">Matemática</span>
+                                <span class="badge" data-lang="pt">Robótica</span>
+                                <span class="badge" data-lang="pt">Automação</span>
+                                <span class="badge" data-lang="pt">Física</span>
+                                <span class="badge" data-lang="pt">Matemática</span>
+                                
+                                <span class="badge" data-lang="en">Robotics</span>
+                                <span class="badge" data-lang="en">Automation</span>
+                                <span class="badge" data-lang="en">Physics</span>
+                                <span class="badge" data-lang="en">Mathematics</span>
+
+                                <span class="badge" data-lang="es">Robótica</span>
+                                <span class="badge" data-lang="es">Automatización</span>
+                                <span class="badge" data-lang="es">Física</span>
+                                <span class="badge" data-lang="es">Matemáticas</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="divider"></div>
                     
-                    <h3 style="color: var(--text); margin-bottom: 16px;">Impacto Educacional</h3>
+                    <h3 style="color: var(--text); margin-bottom: 16px;" data-lang="pt">Impacto Educacional</h3>
+                    <h3 style="color: var(--text); margin-bottom: 16px;" data-lang="en">Educational Impact</h3>
+                    <h3 style="color: var(--text); margin-bottom: 16px;" data-lang="es">Impacto Educativo</h3>
+                    
                     <div class="stats">
-                        <div class="stat"><div class="num">5+</div><div class="sub">objetivos BNCC por projeto</div></div>
-                        <div class="stat"><div class="num">10+</div><div class="sub">projetos disponíveis</div></div>
-                        <div class="stat"><div class="num">100%</div><div class="sub">material de baixo custo</div></div>
+                        <div class="stat">
+                            <div class="num">5+</div>
+                            <div class="sub" data-lang="pt">objetivos BNCC por projeto</div>
+                            <div class="sub" data-lang="en">BNCC objectives per project</div>
+                            <div class="sub" data-lang="es">objetivos BNCC por proyecto</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">10+</div>
+                            <div class="sub" data-lang="pt">projetos disponíveis</div>
+                            <div class="sub" data-lang="en">available projects</div>
+                            <div class="sub" data-lang="es">proyectos disponibles</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">100%</div>
+                            <div class="sub" data-lang="pt">material de baixo custo</div>
+                            <div class="sub" data-lang="en">low-cost materials</div>
+                            <div class="sub" data-lang="es">materiales de bajo costo</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Contato e CTA (final da página) -->
         <section id="contato" class="anchor-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="eyebrow">Contato</span>
-                    <h2 class="section-title">Leve o Gear Up para sua escola</h2>
+                    <span class="eyebrow" data-lang="pt"><span class="eyebrow-text">Contato</span></span>
+                    <span class="eyebrow" data-lang="en"><span class="eyebrow-text">Contact</span></span>
+                    <span class="eyebrow" data-lang="es"><span class="eyebrow-text">Contacto</span></span>
+                    
+                    <h2 class="section-title" data-lang="pt">Leve o Gear Up para sua escola</h2>
+                    <h2 class="section-title" data-lang="en">Bring Gear Up to your school</h2>
+                    <h2 class="section-title" data-lang="es">Lleva Gear Up a tu escuela</h2>
                 </div>
                 <div class="card contact">
-                    <p class="lead">Quer falar com os <strong>Robonáticos 7565</strong> e aplicar o programa na sua instituição? Envie uma mensagem e retornaremos rapidamente.</p>
+                    <p class="lead" data-lang="pt">Quer falar com os <strong>Robonáticos 7565</strong> e aplicar o programa na sua instituição? Envie uma mensagem e retornaremos rapidamente.</p>
+                    <p class="lead" data-lang="en">Want to talk to <strong>Robonáticos 7565</strong> and implement the program in your institution? Send us a message and we'll get back to you quickly.</p>
+                    <p class="lead" data-lang="es">¿Quieres hablar con <strong>Robonáticos 7565</strong> e implementar el programa en tu institución? Envíanos un mensaje y te responderemos rápidamente.</p>
+                    
                     <div class="cta-bar" style="margin-top:12px;">
                         <a class="btn-primary icon-btn" href="https://mail.google.com" target="_blank" rel="noopener">
                             <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5V17a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V6.5Zm2.5-.5a.5.5 0 0 0-.5.5v.29l7.51 4.38a2 2 0 0 0 1.98 0L21 6.79V6.5a.5.5 0 0 0-.5-.5h-15Z"/></svg></span>
@@ -157,9 +342,26 @@
                         </a>
                     </div>
                     <div class="stats">
-                        <div class="stat"><div class="num">10+ projetos</div><div class="sub">de baixo custo</div></div>
-                        <div class="stat"><div class="num">BNCC</div><div class="sub">alinhado à base nacional</div></div>
-                        <div class="stat"><div class="num">$2.80 USD</div><div class="sub">Robô movido a luz</div></div>
+                        <div class="stat">
+                            <div class="num" data-lang="pt">10+ projetos</div>
+                            <div class="num" data-lang="en">10+ projects</div>
+                            <div class="num" data-lang="es">10+ proyectos</div>
+                            <div class="sub" data-lang="pt">de baixo custo</div>
+                            <div class="sub" data-lang="en">low-cost</div>
+                            <div class="sub" data-lang="es">de bajo costo</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">BNCC</div>
+                            <div class="sub" data-lang="pt">alinhado à base nacional</div>
+                            <div class="sub" data-lang="en">aligned with national base</div>
+                            <div class="sub" data-lang="es">alineado con la base nacional</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">$2.80 USD</div>
+                            <div class="sub" data-lang="pt">Robô movido a luz</div>
+                            <div class="sub" data-lang="en">Light-powered robot</div>
+                            <div class="sub" data-lang="es">Robot Impulsado por Luz</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -170,7 +372,9 @@
         <div class="container foot-grid">
             <div class="foot-brand">
                 <img class="foot-logo" src="./img/Untitled design (2).png" alt="Gear Up" />
-                <p class="foot-copy">Programa educacional para tornar STEAM acessível e envolvente.</p>
+                <p class="foot-copy" data-lang="pt">Programa educacional para tornar STEAM acessível e envolvente.</p>
+                <p class="foot-copy" data-lang="en">Educational program to make STEAM accessible and engaging.</p>
+                <p class="foot-copy" data-lang="es">Programa educativo para hacer STEAM accesible y atractivo</p>
             </div>
             <div class="foot-links">
                 <div class="foot-links">
@@ -202,6 +406,27 @@
     
     <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Sistema de alternância de idiomas
+    function switchLanguage(lang) {
+        document.body.setAttribute('data-current-lang', lang);
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+        
+        // Atualiza botões
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+        });
+        
+        // Salva preferência
+        localStorage.setItem('preferred-language', lang);
+    }
+    
+    // Carrega idioma salvo
+    const savedLang = localStorage.getItem('preferred-language');
+    if (savedLang) {
+        switchLanguage(savedLang);
+    }
+    
     const hero = document.querySelector('.hero');
     const headbar = document.querySelector('.headbar');
     const obs = new IntersectionObserver(([entry]) => {
@@ -213,7 +438,6 @@
     }, { rootMargin: '-76px 0px 0px 0px', threshold: 0.01 });
     if (hero && headbar) { obs.observe(hero); }
     
-    // Esconde ao rolar para baixo e mostra ao rolar para cima
     let lastY = window.scrollY;
     window.addEventListener('scroll', () => {
         const currentY = window.scrollY;
@@ -226,7 +450,6 @@
         lastY = currentY;
     }, { passive: true });
     
-    // Lightbox simples
     const gallery = document.getElementById('gallery');
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
@@ -252,5 +475,5 @@
     }
     </script>
     
-    </body>
-    </html>
+</body>
+</html>

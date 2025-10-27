@@ -6,159 +6,372 @@
     <title>GearUP - Aplicações</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="aplicacoes.css">
+    <style>
+         .lang-toggle {
+            display: flex;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 4px;
+            margin-left: auto;
+        }
+        
+        .lang-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 50px;
+            background: transparent;
+            color: rgba(0, 0, 0, 0.404);
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.354);
+            color: #f7c11e;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        [data-lang]:not([data-lang="pt"]) {
+            display: none;
+        }
+
+        body[data-current-lang="en"] [data-lang="pt"],
+        body[data-current-lang="en"] [data-lang="es"] {
+            display: none;
+        }
+
+        body[data-current-lang="en"] [data-lang="en"] {
+            display: block;
+        }
+
+        body[data-current-lang="es"] [data-lang="pt"],
+        body[data-current-lang="es"] [data-lang="en"] {
+            display: none;
+        }
+
+        body[data-current-lang="es"] [data-lang="es"] {
+            display: block;
+        }
+
+        body[data-current-lang="en"] .feature-list [data-lang="en"],
+        body[data-current-lang="en"] .badges [data-lang="en"],
+        body[data-current-lang="pt"] .feature-list [data-lang="pt"],
+        body[data-current-lang="pt"] .badges [data-lang="pt"],
+        body[data-current-lang="es"] .feature-list [data-lang="es"],
+        body[data-current-lang="es"] .badges [data-lang="es"] {
+            display: flex;
+        }
+    </style>
+    </style>
 </head>
-<body>
-    <!-- Header/Navbar -->
-    <div class="headbar-wrap">
-        <nav class="headbar">
-            <div class="nav">
-                <a href="index.html#intro">Introdução</a>
-                <a href="modulos.html">Módulos</a>
-                <a href="aplicacoes.html">Aplicações</a>
-                <a href="index.html#contato">Contate‑nos</a>
-                <a href="agradecimentos.html">Agradecimentos</a>
-            </div>
-        </nav>
-    </div>
-
-    <!-- Logos dos Cantos -->
-    <a href="https://www.robonaticos7565.com/" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       class="logo-link">
-        <img class="corner-logo logo-left" src="./img/2.png" alt="Logo Robonáticos">
-    </a>
-     
-    <a href="https://www.firstinspires.org/" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       class="logo-link-right">
-        <img class="corner-logo logo-right" src="./img/Untitled design (1).png" alt="Logo First">
-    </a>
-
-    <!-- Seção Hero com Imagem de Fundo -->
-    <section class="hero">
-        <div class="hero-content">
+<body data-current-lang="pt">
+    <body data-current-lang="pt">
+        <!-- Header/Navbar -->
+        <div class="headbar-wrap">
+            <nav class="headbar">
+                <div class="nav">
+                    <a href="index.html#intro" data-lang="pt">Introdução</a>
+                    <a href="index.html#intro" data-lang="en">Introduction</a>
+                    <a href="index.html#intro" data-lang="es">Introducción</a>
+                    
+                    <a href="modulos.html" data-lang="pt">Módulos</a>
+                    <a href="modulos.html" data-lang="en">Modules</a>
+                    <a href="modulos.html" data-lang="es">Módulos</a>
+                    
+                    <a href="aplicacoes.html" data-lang="pt">Aplicações</a>
+                    <a href="aplicacoes.html" data-lang="en">Applications</a>
+                    <a href="aplicacoes.html" data-lang="es">Aplicaciones</a>
+                    
+                    <a href="index.html#contato" data-lang="pt">Contate‑nos</a>
+                    <a href="index.html#contato" data-lang="en">Contact Us</a>
+                    <a href="index.html#contato" data-lang="es">Contáctenos</a>
+                    
+                    <a href="agradecimentos.html" data-lang="pt">Agradecimentos</a>
+                    <a href="agradecimentos.html" data-lang="en">Acknowledgments</a>
+                    <a href="agradecimentos.html" data-lang="es">Agradecimientos</a>
+                    
+                    <div class="lang-toggle">
+                        <button class="lang-btn active" data-lang-btn="pt" onclick="switchLanguage('pt')">
+                            <img src="./img/Flag_of_Brazil.svg.png" alt="Brasil" style="width: 16px; height: 12px; object-fit: cover;">
+                        </button>
+                        <button class="lang-btn" data-lang-btn="en" onclick="switchLanguage('en')">
+                            <img src="./img/Flag_of_the_United_States_(DDD-F-416E_specifications).svg.png" alt="United States" style="width: 20px; height: 15px; object-fit: contain;">
+                        </button>
+                        <button class="lang-btn" data-lang-btn="es" onclick="switchLanguage('es')">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg" alt="España" style="width: 20px; height: 13px; object-fit: contain;">
+                        </button>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </section>
-
-    <!-- Seção de Conteúdo Branca -->
-    <section class="content-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="eyebrow">Aplicações</span>
-                <h2 class="section-title">Nossas Aplicações</h2>
+    
+        <!-- Logos dos Cantos -->
+        <a href="https://www.robonaticos7565.com/" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="logo-link">
+            <img class="corner-logo logo-left" src="./img/2.png" alt="Logo Robonáticos">
+        </a>
+         
+        <a href="https://www.firstinspires.org/" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="logo-link-right">
+            <img class="corner-logo logo-right" src="./img/Untitled design (1).png" alt="Logo First">
+        </a>
+    
+        <!-- Seção Hero com Imagem de Fundo -->
+        <section class="hero">
+            <div class="hero-content">
             </div>
-            <div class="card contact">
-                <p class="lead">Descubra como a tecnologia e robótica estão transformando vidas e comunidades através dos nossos projetos inovadores</p>
+        </section>
+    
+        <!-- Seção de Conteúdo Branca -->
+        <section class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow" data-lang="pt"><span class="eyebrow-text">Aplicações</span></span>
+                    <span class="eyebrow" data-lang="en"><span class="eyebrow-text">Applications</span></span>
+                    <span class="eyebrow" data-lang="es"><span class="eyebrow-text">Aplicaciones</span></span>
+    
+                    <h2 class="section-title" data-lang="pt">Nossas Aplicações</h2>
+                    <h2 class="section-title" data-lang="en">Our Applications</h2>
+                    <h2 class="section-title" data-lang="es">Nuestras Aplicaciones</h2>
+                    
+                </div>
+                <div class="card contact">
+                    <p class="lead" data-lang="pt">Descubra como a tecnologia e robótica estão transformando vidas e comunidades através dos nossos projetos inovadores</p>
+                    <p class="lead" data-lang="en">Discover how technology and robotics are transforming lives and communities through our innovative projects</p>
+                    <p class="lead" data-lang="es">Descubra cómo la tecnología y la robótica están transformando vidas y comunidades a través de nuestros proyectos innovadores.</p>
+    
+                <!-- Grid de Aplicações -->
+                <div class="applications-grid">
+                    <!-- Aplicação 1 - GRAACC -->
+                    <div class="application-card">
+                        <img src="./img/IMG_7383.JPG" alt="Projeto GRAACC" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title" data-lang="pt">Projeto GRAACC</h3>
+                            <h3 class="card-title" data-lang="en">GRAACC Project</h3>
+                            <h3 class="card-title" data-lang="es">Proyecto GRAACC</h3>
+    
+                            <p class="card-description" data-lang="pt">
+                                Desenvolvemos soluções robóticas terapêuticas para apoiar crianças e adolescentes em tratamento oncológico, promovendo bem-estar e esperança através da tecnologia.
+                            </p>
+                            <p class="card-description" data-lang="en">
+                                We develop therapeutic robotic solutions to support children and adolescents in cancer treatment, promoting well-being and hope through technology.
+                            </p>
+                            <p class="card-description" data-lang="es">
+                                Desarrollamos soluciones robóticas terapéuticas para apoyar a niños y adolescentes en tratamiento contra el cáncer, promoviendo el bienestar y la esperanza a través de la tecnología.
+    
+                            <div class="card-tags">
+                                <span class="tag" data-lang="pt">Saúde</span>
+                                <span class="tag" data-lang="en">Health</span>
+                                <span class="tag" data-lang="es">Salud</span>
+                                
+                                <span class="tag" data-lang="pt">Robótica Social</span>
+                                <span class="tag" data-lang="en">Social Robotics</span>
+                                <span class="tag" data-lang="es">Robótica Social</span>
+                                
+                                <span class="tag" data-lang="pt">Impacto Social</span>
+                                <span class="tag" data-lang="en">Social Impact</span>
+                                <span class="tag" data-lang="es">Impacto Social</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Aplicação 2 - Itabira -->
+                    <div class="application-card">
+                        <img src="./img/Itabira.png" alt="Projeto Itabira" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title" data-lang="pt">Projeto Itabira</h3>
+                            <h3 class="card-title" data-lang="en">Itabira Project</h3>
+                            <h3 class="card-title" data-lang="es">Proyecto Itabira</h3>
+    
+                            <p class="card-description" data-lang="pt">
+                                Iniciativa voltada para levar educação em robótica e tecnologia para comunidades em Itabira, capacitando jovens e promovendo inclusão digital.
+                            </p>
+                            <p class="card-description" data-lang="en">
+                                Initiative aimed at bringing robotics and technology education to communities in Itabira, empowering young people and promoting digital inclusion.
+                            </p>
+                            <p class="card-description" data-lang="es">
+                                Iniciativa destinada a llevar educación en robótica y tecnología a las comunidades de Itabira, empoderando a los jóvenes y promoviendo la inclusión digital.
+                                <div class="card-tags">
+                                <span class="tag" data-lang="pt">Educação</span>
+                                <span class="tag" data-lang="en">Education</span>
+                                <span class="tag" data-lang="es">Educación</span>
+    
+                                
+                                <span class="tag" data-lang="pt">Inclusão Digital</span>
+                                <span class="tag" data-lang="en">Digital Inclusion</span>
+                                <span class="tag" data-lang="es">Inclusión Digital</span>
+    
+                                <span class="tag" data-lang="pt">Comunidade</span>
+                                <span class="tag" data-lang="en">Community</span>
+                                <span class="tag" data-lang="es">Comunidad</span>
+    
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Aplicação 3 - Itau -->
+                    <div class="application-card">
+                        <img src="./img/54338535464_66f813622c_o.jpg" alt="ITAÚ Trampos do futuro" class="card-image">
+                        <div class="card-content">
+                            <h3 class="card-title" data-lang="pt">Trampos do Futuro</h3>
+                            <h3 class="card-title" data-lang="en">Trampos do Futuro</h3>
+                            
+                            <p class="card-description" data-lang="pt">
+                                Projeto do GearUP no evento Trampos do Futuro da fundação do ITAÚ, para promover a tecnologia no trabalho e na juventude.
+                            </p>
+                            <p class="card-description" data-lang="en">
+                                GearUP project at the ITAÚ Foundation's Trampos do Futuro event, to promote technology in work and youth.
+                            </p>
+                            <p class="card-description" data-lang="es">
+                                Proyecto GearUP en el evento Trampos do Futuro de la Fundación ITAÚ, para promover la tecnología en el ambiente laboral y entre los jóvenes.                        </p>
+    
+                            <div class="card-tags">
+                                <span class="tag" data-lang="pt">Impacto Social</span>
+                                <span class="tag" data-lang="en">Social Impact</span>
+                                <span class="tag" data-lang="es">Impacto Social</span>
+    
+                                <span class="tag" data-lang="pt">Inclusão Digital</span>
+                                <span class="tag" data-lang="en">Digital Inclusion</span>
+                                <span class="tag" data-lang="en">Inclusión Digital</span>
+    
+                                <span class="tag" data-lang="pt">Comunidade</span>
+                                <span class="tag" data-lang="en">Community</span>
+                                <span class="tag" data-lang="es">Comunidad</span>
+                            </div>
+                        </div>
+                    </div>
+    
+<!-- Aplicação 4 - Oaxaca -->
+<div class="application-card">
+    <img src="./img/WhatsApp Image 2025-09-16 at 10.50.22 AM.jpeg" alt="Oaxaca" class="card-image">
+    <div class="card-content">
+        <h3 class="card-title" data-lang="pt">Aplicação em Oaxaca</h3>
+        <h3 class="card-title" data-lang="en">Application in Oaxaca</h3>
+        <h3 class="card-title" data-lang="es">Aplicación en Oaxaca</h3>
+        
+        <p class="card-description" data-lang="pt">
+            Aplicação do programa GearUP junto a uma comunidade indígena localizada no interior de Oaxaca, no México, promovendo ações educativas e tecnológicas, capazes de impactar diretamente mais de 300 jovens.
+        </p>
+        <p class="card-description" data-lang="en">
+            Application of the GearUP program with an indigenous community located in the interior of Oaxaca, Mexico, promoting educational and technological actions, capable of directly impacting more than 300 young people.
+        </p>
+        <p class="card-description" data-lang="es">
+            Aplicación del programa GearUP junto a una comunidad indígena ubicada en el interior de Oaxaca, México, promoviendo acciones educativas y tecnológicas capaces de impactar directamente a más de 300 jóvenes.
+        </p>
+        
+        <div class="card-tags">
+            <span class="tag" data-lang="pt">Impacto Social</span>
+            <span class="tag" data-lang="en">Social Impact</span>
+            <span class="tag" data-lang="es">Impacto Social</span>
             
-            <!-- Grid de Aplicações -->
-            <div class="applications-grid">
-                <!-- Aplicação 1 - GRAACC -->
-                <div class="application-card">
-                    <img src="./img/IMG_7383.JPG" alt="Projeto GRAACC" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Projeto GRAACC</h3>
-                        <p class="card-description">
-                            Desenvolvemos soluções robóticas terapêuticas para apoiar crianças e adolescentes em tratamento oncológico, promovendo bem-estar e esperança através da tecnologia.
-                        </p>
-                        <div class="card-tags">
-                            <span class="tag">Saúde</span>
-                            <span class="tag">Robótica Social</span>
-                            <span class="tag">Impacto Social</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Aplicação 2 - Itabira -->
-                <div class="application-card">
-                    <img src="./img/Itabira.png" alt="Projeto Itabira" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Projeto Itabira</h3>
-                        <p class="card-description">
-                            Iniciativa voltada para levar educação em robótica e tecnologia para comunidades em Itabira, capacitando jovens e promovendo inclusão digital.
-                        </p>
-                        <div class="card-tags">
-                            <span class="tag">Educação</span>
-                            <span class="tag">Inclusão Digital</span>
-                            <span class="tag">Comunidade</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Aplicação 3 - Itau -->
-                <div class="application-card">
-                    <img src="./img/54338535464_66f813622c_o.jpg" alt="ITAÚ Trampos do futuro" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Trampos do Futuro</h3>
-                        <p class="card-description">
-                            Projeto do GearUP no evento Trampos do Futuro da fundação do ITAÚ, para promover a tecnologia no trabalho e na juventude.
-                        </p>
-                        <div class="card-tags">
-                            <span class="tag">Impacto Social</span>
-                            <span class="tag">Inclusão Digital</span>
-                            <span class="tag">Comunidade</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Aplicação 4 - Oaxaca -->
-                <div class="application-card">
-                    <img src="./img/WhatsApp Image 2025-09-16 at 10.50.22 AM.jpeg" alt="Oaxaca" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Aplicação em Oaxaca</h3>
-                        <p class="card-description">
-                            Aplicação do programa GearUP junto a uma comunidade indígena localizada no interior de Oaxaca, no México, promovendo ações educativas e tecnológicas, capazes de impactar diretamente mais de 300 jovens.
-                        </p>
-                        <div class="card-tags">
-                            <span class="tag">Impacto Social</span>
-                            <span class="tag">Educação</span>
-                            <span class="tag">Comunidade</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Aplicação 5 - México -->
-                <div class="application-card">
-                    <img src="./img/escola publica mexico.png" alt="mexico" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Escola municipal de robótica no México</h3>
-                        <p class="card-description">
-                            Com uma parceria do Governo Mexicano, estabelecemos uma escola municipal de robótica em Apodaca, México, com o GearUP sendo o material educacional mais utilizado nas salas.
-                        </p>
-                        <div class="card-tags">
-                            <span class="tag">Impacto Social</span>
-                            <span class="tag">Educação</span>
-                            <span class="tag">Comunidade</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Aplicação 6 - Learning Sectors -->
-                <div class="application-card">
-                    <img src="./img/Learning Sectors.png" alt="learning sectors" class="card-image">
-                    <div class="card-content">
-                        <h3 class="card-title">Learning Sectors</h3>
-                        <p class="card-description">
-                            Fomos convidados por uma organização governamental britânica British Council, à participar de um projeto que promove a inclusão da mulher na STEAM.
-                        </p>
-                        <div class="card-tags">
-                            <span class="tag">Impacto Social</span>
-                            <span class="tag">Inclusão Digital</span>
-                            <span class="tag">Tecnologia</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <span class="tag" data-lang="pt">Educação</span>
+            <span class="tag" data-lang="en">Education</span>
+            <span class="tag" data-lang="es">Educación</span>
+            
+            <span class="tag" data-lang="pt">Comunidade</span>
+            <span class="tag" data-lang="en">Community</span>
+            <span class="tag" data-lang="es">Comunidad</span>
         </div>
-    </section>
+    </div>
+</div>
+
+<!-- Aplicação 5 - México -->
+<div class="application-card">
+    <img src="./img/escola publica mexico.png" alt="mexico" class="card-image">
+    <div class="card-content">
+        <h3 class="card-title" data-lang="pt">Escola municipal de robótica no México</h3>
+        <h3 class="card-title" data-lang="en">Municipal robotics school in Mexico</h3>
+        <h3 class="card-title" data-lang="es">Escuela municipal de robótica en México</h3>
+        
+        <p class="card-description" data-lang="pt">
+            Com uma parceria do Governo Mexicano, estabelecemos uma escola municipal de robótica em Apodaca, México, com o GearUP sendo o material educacional mais utilizado nas salas.
+        </p>
+        <p class="card-description" data-lang="en">
+            With a partnership from the Mexican Government, we established a municipal robotics school in Apodaca, Mexico, with GearUP being the most used educational material in the classrooms.
+        </p>
+        <p class="card-description" data-lang="es">
+            En colaboración con el Gobierno Mexicano, establecimos una escuela municipal de robótica en Apodaca, México, donde GearUP es el material educativo más utilizado en las aulas.
+        </p>
+        
+        <div class="card-tags">
+            <span class="tag" data-lang="pt">Impacto Social</span>
+            <span class="tag" data-lang="en">Social Impact</span>
+            <span class="tag" data-lang="es">Impacto Social</span>
+            
+            <span class="tag" data-lang="pt">Educação</span>
+            <span class="tag" data-lang="en">Education</span>
+            <span class="tag" data-lang="es">Educación</span>
+            
+            <span class="tag" data-lang="pt">Comunidade</span>
+            <span class="tag" data-lang="en">Community</span>
+            <span class="tag" data-lang="es">Comunidad</span>
+        </div>
+    </div>
+</div>
+
+<!-- Aplicação 6 - Learning Sectors -->
+<div class="application-card">
+    <img src="./img/Learning Sectors.png" alt="learning sectors" class="card-image">
+    <div class="card-content">
+        <h3 class="card-title" data-lang="pt">Learning Sectors</h3>
+        <h3 class="card-title" data-lang="en">Learning Sectors</h3>
+        <h3 class="card-title" data-lang="es">Sectores de Aprendizaje</h3>
+        
+        <p class="card-description" data-lang="pt">
+            Fomos convidados por uma organização governamental britânica, o British Council, a participar de um projeto que promove a inclusão da mulher na STEAM.
+        </p>
+        <p class="card-description" data-lang="en">
+            We were invited by the British governmental organization, the British Council, to participate in a project that promotes women's inclusion in STEAM.
+        </p>
+        <p class="card-description" data-lang="es">
+            Fuimos invitados por la organización gubernamental británica British Council a participar en un proyecto que promueve la inclusión de las mujeres en STEAM.
+        </p>
+        
+        <div class="card-tags">
+            <span class="tag" data-lang="pt">Impacto Social</span>
+            <span class="tag" data-lang="en">Social Impact</span>
+            <span class="tag" data-lang="es">Impacto Social</span>
+            
+            <span class="tag" data-lang="pt">Inclusão Digital</span>
+            <span class="tag" data-lang="en">Digital Inclusion</span>
+            <span class="tag" data-lang="es">Inclusión Digital</span>
+            
+            <span class="tag" data-lang="pt">Tecnologia</span>
+            <span class="tag" data-lang="en">Technology</span>
+            <span class="tag" data-lang="es">Tecnología</span>
+        </div>
+    </div>
+</div>
+</section>
 
     <!-- Footer -->
     <footer class="site-footer">
         <div class="container foot-grid">
             <div class="foot-brand">
                 <img class="foot-logo" src="./img/Untitled design (2).png" alt="Gear Up" />
-                <p class="foot-copy">Programa educacional para tornar STEAM acessível e envolvente.</p>
+                <p class="foot-copy" data-lang="pt">Programa educacional para tornar STEAM acessível e envolvente.</p>
+                <p class="foot-copy" data-lang="en">Educational program to make STEAM accessible and engaging.</p>
+                <p class="foot-copy" data-lang="es">Programa educativo para hacer STEAM accesible y atractivo</p>
             </div>
             <div class="foot-links">
                 <div class="foot-links">
@@ -190,6 +403,26 @@
     </div>
 
     <script>
+        // Sistema de alternância de idiomas
+        function switchLanguage(lang) {
+            document.body.setAttribute('data-current-lang', lang);
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+            
+            // Atualiza botões
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+            });
+            
+            // Salva preferência
+            localStorage.setItem('preferred-language', lang);
+        }
+        
+        // Carrega idioma salvo
+        const savedLang = localStorage.getItem('preferred-language');
+        if (savedLang) {
+            switchLanguage(savedLang);
+        }
+        
         // Animação suave para os cards ao carregar
         document.addEventListener('DOMContentLoaded', function() {
             const cards = document.querySelectorAll('.application-card');

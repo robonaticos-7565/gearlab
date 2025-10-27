@@ -6,6 +6,76 @@
     <title>Módulos - GearUP</title>
     <link rel="stylesheet" href="style.css" />
     <style>
+        .lang-toggle {
+            display: flex;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 4px;
+            margin-left: auto;
+        }
+        
+        .lang-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 50px;
+            background: transparent;
+            color: rgba(0, 0, 0, 0.404);
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.354);
+            color: #f7c11e;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        [data-lang]:not([data-lang="pt"]) {
+            display: none;
+        }
+
+        body[data-current-lang="en"] [data-lang="pt"],
+        body[data-current-lang="en"] [data-lang="es"] {
+            display: none;
+        }
+
+        body[data-current-lang="en"] [data-lang="en"] {
+            display: block;
+        }
+
+        body[data-current-lang="es"] [data-lang="pt"],
+        body[data-current-lang="es"] [data-lang="en"] {
+            display: none;
+        }
+
+        body[data-current-lang="es"] [data-lang="es"] {
+            display: block;
+        }
+
+        body[data-current-lang="en"] .feature-list [data-lang="en"],
+        body[data-current-lang="en"] .badges [data-lang="en"],
+        body[data-current-lang="pt"] .feature-list [data-lang="pt"],
+        body[data-current-lang="pt"] .badges [data-lang="pt"],
+        body[data-current-lang="es"] .feature-list [data-lang="es"],
+        body[data-current-lang="es"] .badges [data-lang="es"] {
+            display: flex;
+        }
 :root {
     --text: #1f2937;
     --muted: #6b7280;
@@ -142,9 +212,19 @@ body {
 
 /* -------- Seções -------- */
 .anchor-section { padding: 40px 0; scroll-margin-top: 80px; }
-.section-header { margin-bottom: 32px; text-align: left; }
+.section-header { 
+    margin-bottom: 32px !important;
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+}
+
 .eyebrow {
-    display: inline-block;
+    /* REMOVA o display: block !important */
+    width: fit-content !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
     text-transform: uppercase;
     font-size: 0.85rem;
     font-weight: 700;
@@ -153,7 +233,34 @@ body {
     padding: 6px 10px;
     border-radius: 999px;
     border: 1px solid var(--divider);
-    background: #f7c11e19;
+    background: #f7c11e9a;
+}
+
+/* Ajuste o sistema de idiomas para ser mais específico */
+[data-lang]:not([data-lang="pt"]) {
+    display: none !important;
+}
+
+body[data-current-lang="en"] [data-lang="pt"],
+body[data-current-lang="en"] [data-lang="es"] {
+    display: none !important;
+}
+
+body[data-current-lang="en"] [data-lang="en"] {
+    display: inline-block !important;
+}
+
+body[data-current-lang="es"] [data-lang="pt"],
+body[data-current-lang="es"] [data-lang="en"] {
+    display: none !important;
+}
+
+body[data-current-lang="es"] [data-lang="es"] {
+    display: inline-block !important;
+}
+
+body[data-current-lang="pt"] [data-lang="pt"] {
+    display: inline-block !important;
 }
 .section-title { font-size: 2rem; font-weight: 700; color: var(--text); margin-top: 12px; }
 
@@ -260,44 +367,90 @@ body {
     .module-card h4 { font-size: 1rem; }
     .cta-bar { flex-direction: column; gap: 10px; }
 }
-    </style>
+</style>
 </head>
 <body>
     <div class="headbar-wrap">
-        <nav class="headbar headbar--solid">
+        <nav class="headbar">
             <div class="nav">
-                <a href="index.html">Introdução</a>
-                <a href="modulos.html" class="active">Módulos</a>
-                <a href="aplicacoes.html">Aplicações</a>
-                <a href="index.html#contato">Contate-nos</a>
-                <a href="agradecimentos.html">Agradecimentos</a>
+                <a href="index.html#intro" data-lang="pt">Introdução</a>
+                <a href="index.html#intro" data-lang="en">Introduction</a>
+                <a href="index.html#intro" data-lang="es">Introducción</a>
+                
+                <a href="modulos.html" data-lang="pt">Módulos</a>
+                <a href="modulos.html" data-lang="en">Modules</a>
+                <a href="modulos.html" data-lang="es">Módulos</a>
+                
+                <a href="aplicacoes.html" data-lang="pt">Aplicações</a>
+                <a href="aplicacoes.html" data-lang="en">Applications</a>
+                <a href="aplicacoes.html" data-lang="es">Aplicaciones</a>
+                
+                <a href="index.html#contato" data-lang="pt">Contate‑nos</a>
+                <a href="index.html#contato" data-lang="en">Contact Us</a>
+                <a href="index.html#contato" data-lang="es">Contáctenos</a>
+                
+                <a href="agradecimentos.html" data-lang="pt">Agradecimentos</a>
+                <a href="agradecimentos.html" data-lang="en">Acknowledgments</a>
+                <a href="agradecimentos.html" data-lang="es">Agradecimientos</a>
+                
+                <div class="lang-toggle">
+                    <button class="lang-btn active" data-lang-btn="pt" onclick="switchLanguage('pt')">
+                        <img src="./img/Flag_of_Brazil.svg.png" alt="Brasil" style="width: 16px; height: 12px; object-fit: cover;">
+                    </button>
+                    <button class="lang-btn" data-lang-btn="en" onclick="switchLanguage('en')">
+                        <img src="./img/Flag_of_the_United_States_(DDD-F-416E_specifications).svg.png" alt="United States" style="width: 20px; height: 15px; object-fit: contain;">
+                    </button>
+                    <button class="lang-btn" data-lang-btn="es" onclick="switchLanguage('es')">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg" alt="España" style="width: 20px; height: 13px; object-fit: contain;">
+                    </button>
+                </div>
             </div>
         </nav>
     </div>
+
     <section class="hero-section">
-        <img src="./img/Captura de tela 2025-10-08 092505.png" alt="GearUP Logo">
+        <img src="./img/gearupvarios.jpeg" alt="GearUP">
     </section>
+
     <main class="site-content">
         <section class="anchor-section">
             <div class="container">
                 
                 <div class="section-header">
-                    <span class="eyebrow">Material educacional</span>
-                    <h2 class="section-title">Módulos do Gear Up</h2>
+                    <span class="eyebrow" data-lang="pt"><span class="eyebrow-text">Material educacional</span></span>
+                    <span class="eyebrow" data-lang="en"><span class="eyebrow-text">Educational Material</span></span>
+                    <span class="eyebrow" data-lang="es"><span class="eyebrow-text">Material educativo</span></span>
+                    
+                    <h2 class="section-title" data-lang="pt">Módulos do Gear Up</h2>
+                    <h2 class="section-title" data-lang="en">Gear Up Modules</h2>
+                    <h2 class="section-title" data-lang="es">Módulos de Gear Up</h2>
                 </div>
                 
                 <div class="card">
-                    <p class="lead">Nossos módulos foram desenvolvidos para proporcionar uma experiência de aprendizado completa e envolvente. Cada projeto está alinhado com a Base Nacional Comum Curricular (BNCC) e pode ser aplicado de forma autônoma pelos professores.</p>
+                    <p class="lead" data-lang="pt">Nossos módulos foram desenvolvidos para proporcionar uma experiência de aprendizado completa e envolvente. Cada projeto está alinhado com a Base Nacional Comum Curricular (BNCC) e pode ser aplicado de forma autônoma pelos professores.</p>
+                    <p class="lead" data-lang="en">Our modules were developed to provide a complete and engaging learning experience. Each project is aligned with the National Common Curricular Base (BNCC) and can be applied autonomously by teachers.</p>
+                    <p class="lead" data-lang="es">Nuestros módulos fueron desarrollados para proporcionar una experiencia de aprendizaje completa y atractiva. Cada proyecto está alineado con la Base Nacional Común Curricular (BNCC) y puede ser aplicado de forma autónoma por los profesores.</p>
                     
                     <div class="pdf-container">
                         <div class="pdf-header">
                             <div class="pdf-info">
-                                <h3>Manual Completo Gear Up</h3>
-                                <p>Mais de 10 projetos práticos de baixo custo para educação STEAM</p>
+                                <h3 data-lang="pt">Manual Completo Gear Up</h3>
+                                <h3 data-lang="en">Complete Gear Up Manual</h3>
+                                <h3 data-lang="es">Manual Completo Gear Up</h3>
+                                
+                                <p data-lang="pt">Mais de 10 projetos práticos de baixo custo para educação STEAM</p>
+                                <p data-lang="en">Over 10 practical low-cost projects for STEAM education</p>
+                                <p data-lang="es">Más de 10 proyectos prácticos de bajo costo para educación STEAM</p>
                             </div>
                             <div class="pdf-actions">
-                                <a href="./img/Gear Up .pdf" class="btn-download" download target="_blank">
+                                <a href="./img/Gear Up .pdf" class="btn-download" download target="_blank" data-lang="pt">
                                     Download PDF
+                                </a>
+                                <a href="./img/Gear Up .pdf" class="btn-download" download target="_blank" data-lang="en">
+                                    Download PDF
+                                </a>
+                                <a href="./img/Gear Up .pdf" class="btn-download" download target="_blank" data-lang="es">
+                                    Descargar PDF
                                 </a>
                             </div>
                         </div>
@@ -305,53 +458,112 @@ body {
                 </div>
 
                 <div class="card" style="margin-top: 24px;">
-                    <h3 style="color: var(--text); margin-bottom: 20px;">Conteúdo dos Módulos</h3>
+                    <h3 style="color: var(--text); margin-bottom: 20px;" data-lang="pt">Conteúdo dos Módulos</h3>
+                    <h3 style="color: var(--text); margin-bottom: 20px;" data-lang="en">Module Content</h3>
+                    <h3 style="color: var(--text); margin-bottom: 20px;" data-lang="es">Contenido de los Módulos</h3>
                     
                     <div class="module-grid">
                         <div class="module-card">
-                            <h4>Módulo 1: Gear Up Básico</h4>
-                            <p>Projetos voltados para Ensino Fundamental 2. Primeiro módulo criado. Robô de luz como principal projeto.</p>
+                            <h4 data-lang="pt">Módulo 1: Gear Up Básico</h4>
+                            <h4 data-lang="en">Module 1: Basic Gear Up</h4>
+                            <h4 data-lang="es">Módulo 1: Gear Up Básico</h4>
+                            
+                            <p data-lang="pt">Projetos voltados para Ensino Fundamental 2. Primeiro módulo criado. Robô de luz como principal projeto.</p>
+                            <p data-lang="en">Projects aimed at Elementary School 2. First module created. Light robot as the main project.</p>
+                            <p data-lang="es">Proyectos dirigidos a Educación Básica 2. Primer módulo creado. Robot de luz como proyecto principal.</p>
                         </div>
                         
                         <div class="module-card">
-                            <h4>Módulo 2: Gear Up Fórmula Maker</h4>
-                            <p>Projetos sem a utilização de componentes eletrônicos, apenas voltado para engenharia. Criado durante a pandemia para auxiliar professores na Educação a Distância.</p>
+                            <h4 data-lang="pt">Módulo 2: Gear Up Fórmula Maker</h4>
+                            <h4 data-lang="en">Module 2: Gear Up Formula Maker</h4>
+                            <h4 data-lang="es">Módulo 2: Gear Up Fórmula Maker</h4>
+                            
+                            <p data-lang="pt">Projetos sem a utilização de componentes eletrônicos, apenas voltado para engenharia. Criado durante a pandemia para auxiliar professores na Educação a Distância.</p>
+                            <p data-lang="en">Projects without the use of electronic components, focused only on engineering. Created during the pandemic to assist teachers in Distance Education.</p>
+                            <p data-lang="es">Proyectos sin el uso de componentes electrónicos, enfocados solo en ingeniería. Creado durante la pandemia para ayudar a los profesores en la Educación a Distancia.</p>
                         </div>
                         
                         <div class="module-card">
-                            <h4>Módulo 3: Gear Up High Tech</h4>
-                            <p>Projetos maker utilizando programação avançada. Voltado para estudantes do Ensino Médio. Robô de sumô como principal projeto.</p>
+                            <h4 data-lang="pt">Módulo 3: Gear Up High Tech</h4>
+                            <h4 data-lang="en">Module 3: Gear Up High Tech</h4>
+                            <h4 data-lang="es">Módulo 3: Gear Up High Tech</h4>
+                            
+                            <p data-lang="pt">Projetos maker utilizando programação avançada. Voltado para estudantes do Ensino Médio. Robô de sumô como principal projeto.</p>
+                            <p data-lang="en">Maker projects using advanced programming. Aimed at High School students. Sumo robot as the main project.</p>
+                            <p data-lang="es">Proyectos maker utilizando programación avanzada. Dirigido a estudiantes de Educación Secundaria. Robot de sumo como proyecto principal.</p>
                         </div>
                         
                         <div class="module-card">
-                            <h4>Módulo 4: Gear Up Artes</h4>
-                            <p>Mescla artes com tecnologia e inovação. Projetos que incentivam a criatividade em alunos de sua maioria no Ensino Médio/ Ensino Fundamental.</p>
+                            <h4 data-lang="pt">Módulo 4: Gear Up Artes</h4>
+                            <h4 data-lang="en">Module 4: Gear Up Arts</h4>
+                            <h4 data-lang="es">Módulo 4: Gear Up Artes</h4>
+                            
+                            <p data-lang="pt">Mescla artes com tecnologia e inovação. Projetos que incentivam a criatividade em alunos de sua maioria no Ensino Médio/ Ensino Fundamental.</p>
+                            <p data-lang="en">Blends arts with technology and innovation. Projects that encourage creativity in students, mostly in High School/Elementary School.</p>
+                            <p data-lang="es">Mezcla artes con tecnología e innovación. Proyectos que fomentan la creatividad en estudiantes, principalmente de Educación Secundaria/Básica.</p>
                         </div>
                         
                         <div class="module-card">
-                            <h4>Módulo 5: Gear Up Lego</h4>
-                            <p>Criado para atender o hospital de crianças com câncer (GRAACC). 100% esterilizável, utilizando de materiais LEGO para a educação de robótica e tecnologia.</p>
+                            <h4 data-lang="pt">Módulo 5: Gear Up Lego</h4>
+                            <h4 data-lang="en">Module 5: Gear Up Lego</h4>
+                            <h4 data-lang="es">Módulo 5: Gear Up Lego</h4>
+                            
+                            <p data-lang="pt">Criado para atender o hospital de crianças com câncer (GRAACC). 100% esterilizável, utilizando de materiais LEGO para a educação de robótica e tecnologia.</p>
+                            <p data-lang="en">Created to serve the children's cancer hospital (GRAACC). 100% sterilizable, using LEGO materials for robotics and technology education.</p>
+                            <p data-lang="es">Creado para atender el hospital de niños con cáncer (GRAACC). 100% esterilizable, utilizando materiales LEGO para la educación de robótica y tecnología.</p>
                         </div>
                     </div>
 
                     <div class="divider"></div>
                     
                     <div class="stats">
-                        <div class="stat"><div class="num">ABNT</div><div class="sub">normas técnicas seguidas</div></div>
-                        <div class="stat"><div class="num">5+ objetivos</div><div class="sub">BNCC por projeto</div></div>
-                        <div class="stat"><div class="num">Autônomo</div><div class="sub">uso pelos professores</div></div>
+                        <div class="stat">
+                            <div class="num">ABNT</div>
+                            <div class="sub" data-lang="pt">normas técnicas seguidas</div>
+                            <div class="sub" data-lang="en">technical standards followed</div>
+                            <div class="sub" data-lang="es">normas técnicas seguidas</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num" data-lang="pt">5+ objetivos</div>
+                            <div class="num" data-lang="en">5+ objectives</div>
+                            <div class="num" data-lang="es">5+ objetivos</div>
+                            <div class="sub" data-lang="pt">BNCC por projeto</div>
+                            <div class="sub" data-lang="en">BNCC per project</div>
+                            <div class="sub" data-lang="es">BNCC por proyecto</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num" data-lang="pt">Autônomo</div>
+                            <div class="num" data-lang="en">Autonomous</div>
+                            <div class="num" data-lang="es">Autónomo</div>
+                            <div class="sub" data-lang="pt">uso pelos professores</div>
+                            <div class="sub" data-lang="en">use by teachers</div>
+                            <div class="sub" data-lang="es">uso por los profesores</div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="card" style="margin-top: 24px;">
-                    <h3 style="color: var(--text); margin-bottom: 16px;">Como aplicar em sua escola</h3>
+                    <h3 style="color: var(--text); margin-bottom: 16px;" data-lang="pt">Como aplicar em sua escola</h3>
+                    <h3 style="color: var(--text); margin-bottom: 16px;" data-lang="en">How to apply in your school</h3>
+                    <h3 style="color: var(--text); margin-bottom: 16px;" data-lang="es">Cómo aplicar en su escuela</h3>
                     <div class="grid-2" style="margin-top: 20px;">
                         <div>
                             <ul class="feature-list">
-                                <li><span class="dot"></span><span><strong>Material Completo:</strong> Tudo o que você precisa está no manual, desde lista de materiais até instruções detalhadas.</span></li>
-                                <li><span class="dot"></span><span><strong>Baixo Custo:</strong> Todos os projetos utilizam materiais acessíveis e de fácil obtenção.</span></li>
-                                <li><span class="dot"></span><span><strong>Flexibilidade:</strong> Pode ser aplicado em diferentes disciplinas e séries escolares.</span></li>
-                                <li><span class="dot"></span><span><strong>Apoio Pedagógico:</strong> Orientações claras para professores de todas as áreas.</span></li>
+                                <li data-lang="pt"><span class="dot"></span><span><strong>Material Completo:</strong> Tudo o que você precisa está no manual, desde lista de materiais até instruções detalhadas.</span></li>
+                                <li data-lang="en"><span class="dot"></span><span><strong>Complete Material:</strong> Everything you need is in the manual, from material lists to detailed instructions.</span></li>
+                                <li data-lang="es"><span class="dot"></span><span><strong>Material Completo:</strong> Todo lo que necesitas está en el manual, desde listas de materiales hasta instrucciones detalladas.</span></li>
+                                
+                                <li data-lang="pt"><span class="dot"></span><span><strong>Baixo Custo:</strong> Todos os projetos utilizam materiais acessíveis e de fácil obtenção.</span></li>
+                                <li data-lang="en"><span class="dot"></span><span><strong>Low Cost:</strong> All projects use accessible and easily obtainable materials.</span></li>
+                                <li data-lang="es"><span class="dot"></span><span><strong>Bajo Costo:</strong> Todos los proyectos utilizan materiales accesibles y de fácil obtención.</span></li>
+                                
+                                <li data-lang="pt"><span class="dot"></span><span><strong>Flexibilidade:</strong> Pode ser aplicado em diferentes disciplinas e séries escolares.</span></li>
+                                <li data-lang="en"><span class="dot"></span><span><strong>Flexibility:</strong> Can be applied in different subjects and school grades.</span></li>
+                                <li data-lang="es"><span class="dot"></span><span><strong>Flexibilidad:</strong> Puede ser aplicado en diferentes materias y grados escolares.</span></li>
+                                
+                                <li data-lang="pt"><span class="dot"></span><span><strong>Apoio Pedagógico:</strong> Orientações claras para professores de todas as áreas.</span></li>
+                                <li data-lang="en"><span class="dot"></span><span><strong>Pedagogical Support:</strong> Clear guidance for teachers from all areas.</span></li>
+                                <li data-lang="es"><span class="dot"></span><span><strong>Apoyo Pedagógico:</strong> Orientaciones claras para profesores de todas las áreas.</span></li>
                             </ul>
                         </div>
                         <div>
@@ -362,13 +574,20 @@ body {
 
                 <div class="card" style="margin-top: 24px;">
                     <div style="text-align: center;">
-                        <h3 style="color: var(--text); margin-bottom: 16px;">Precisa de ajuda com a implementação?</h3>
-                        <p class="lead">Nossa equipe está pronta para apoiar sua escola na aplicação dos módulos Gear Up.</p>
-                        
+                        <h3 style="color: var(--text); margin-bottom: 16px;" data-lang="pt">Precisa de ajuda com a implementação?</h3>
+                        <h3 style="color: var(--text); margin-bottom: 16px;" data-lang="en">Need help with implementation?</h3>
+                        <h3 style="color: var(--text); margin-bottom: 16px;" data-lang="es">¿Necesita ayuda con la implementación?</h3>
+
+                        <p class="lead" data-lang="pt">Nossa equipe está pronta para apoiar sua escola na aplicação dos módulos Gear Up.</p>
+                        <p class="lead" data-lang="en">Our team is ready to support your school in applying the Gear Up modules.</p>
+                        <p class="lead" data-lang="es">Nuestro equipo está listo para apoyar a su escuela en la implementación de los módulos Gear Up.</p>
+
                         <div class="cta-bar" style="margin-top: 20px;">
                             <a class="btn-primary icon-btn" href="https://instagram.com/robonaticos7565" target="_blank" rel="noopener">
                                 <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5V17a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V6.5Zm2.5-.5a.5.5 0 0 0-.5.5v.29l7.51 4.38a2 2 0 0 0 1.98 0L21 6.79V6.5a.5.5 0 0 0-.5-.5h-15Z"/></svg></span>
-                                Fale conosco
+                                <span data-lang="pt">Fale conosco</span>
+                                <span data-lang="en">Contact us</span>
+                                <span data-lang="es">Contáctenos</span>
                             </a>
             </div>
         </section>
@@ -378,7 +597,9 @@ body {
         <div class="container foot-grid">
             <div class="foot-brand">
                 <img class="foot-logo" src="./img/Untitled design (2).png" alt="Gear Up" />
-                <p class="foot-copy">Programa educacional para tornar STEAM acessível e envolvente.</p>
+                <p class="foot-copy" data-lang="pt">Programa educacional para tornar STEAM acessível e envolvente.</p>
+                <p class="foot-copy" data-lang="en">Educational program to make STEAM accessible and engaging.</p>
+                <p class="foot-copy" data-lang="es">Programa educativo para hacer STEAM accesible y atractivo.</p>            
             </div>
             <div class="foot-links">
                 <div class="foot-links">
@@ -404,6 +625,27 @@ body {
     
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Sistema de alternância de idiomas
+        function switchLanguage(lang) {
+            document.body.setAttribute('data-current-lang', lang);
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+            
+            // Atualiza botões
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+            });
+            
+            // Salva preferência
+            localStorage.setItem('preferred-language', lang);
+        }
+        
+        // Carrega idioma salvo
+        const savedLang = localStorage.getItem('preferred-language');
+        if (savedLang) {
+            switchLanguage(savedLang);
+        }
+        
         const headbar = document.querySelector('.headbar');
         let lastY = window.scrollY;
         window.addEventListener('scroll', () => {

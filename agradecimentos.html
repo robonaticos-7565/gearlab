@@ -3,20 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patrocinadores - GearUP</title>
+    <title>GearUP - Aplicações</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="agradecimentos.css">
-</head>
-<body>
+    <style>
+         .lang-toggle {
+            display: flex;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            padding: 4px;
+            margin-left: auto;
+        }
+        
+        .lang-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 50px;
+            background: transparent;
+            color: rgba(0, 0, 0, 0.404);
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.354);
+            color: #f7c11e;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-<div class="headbar-wrap">
-    <nav class="headbar">
-        <div class="nav">
-            <a href="index.html">Introdução</a>
-            <a href="modulos.html">Módulos</a>
-            <a href="aplicacoes.html">Aplicações</a>
-            <a href="index.html#contato">Contate-nos</a>
-            <a href="agradecimentos.html">Agradecimentos</a>
+        [data-lang]:not([data-lang="pt"]) {
+            display: none;
+        }
+
+        body[data-current-lang="en"] [data-lang="pt"],
+        body[data-current-lang="en"] [data-lang="es"] {
+            display: none;
+        }
+
+        body[data-current-lang="en"] [data-lang="en"] {
+            display: block;
+        }
+
+        body[data-current-lang="es"] [data-lang="pt"],
+        body[data-current-lang="es"] [data-lang="en"] {
+            display: none;
+        }
+
+        body[data-current-lang="es"] [data-lang="es"] {
+            display: block;
+        }
+
+        body[data-current-lang="en"] .feature-list [data-lang="en"],
+        body[data-current-lang="en"] .badges [data-lang="en"],
+        body[data-current-lang="pt"] .feature-list [data-lang="pt"],
+        body[data-current-lang="pt"] .badges [data-lang="pt"],
+        body[data-current-lang="es"] .feature-list [data-lang="es"],
+        body[data-current-lang="es"] .badges [data-lang="es"] {
+            display: flex;
+        }
+    </style>
+</head>
+<body data-current-lang="pt">
+
+        <!-- Header/Navbar -->
+        <div class="headbar-wrap">
+            <nav class="headbar">
+                <div class="nav">
+                    <a href="index.html#intro" data-lang="pt">Introdução</a>
+                    <a href="index.html#intro" data-lang="en">Introduction</a>
+                    <a href="index.html#intro" data-lang="es">Introducción</a>
+                    
+                    <a href="modulos.html" data-lang="pt">Módulos</a>
+                    <a href="modulos.html" data-lang="en">Modules</a>
+                    <a href="modulos.html" data-lang="es">Módulos</a>
+                    
+                    <a href="aplicacoes.html" data-lang="pt">Aplicações</a>
+                    <a href="aplicacoes.html" data-lang="en">Applications</a>
+                    <a href="aplicacoes.html" data-lang="es">Aplicaciones</a>
+                    
+                    <a href="index.html#contato" data-lang="pt">Contate‑nos</a>
+                    <a href="index.html#contato" data-lang="en">Contact Us</a>
+                    <a href="index.html#contato" data-lang="es">Contáctenos</a>
+                    
+                    <a href="agradecimentos.html" data-lang="pt">Agradecimentos</a>
+                    <a href="agradecimentos.html" data-lang="en">Acknowledgments</a>
+                    <a href="agradecimentos.html" data-lang="es">Agradecimientos</a>
+                    
+                    <div class="lang-toggle">
+                        <button class="lang-btn active" data-lang-btn="pt" onclick="switchLanguage('pt')">
+                            <img src="./img/Flag_of_Brazil.svg.png" alt="Brasil" style="width: 16px; height: 12px; object-fit: cover;">
+                        </button>
+                        <button class="lang-btn" data-lang-btn="en" onclick="switchLanguage('en')">
+                            <img src="./img/Flag_of_the_United_States_(DDD-F-416E_specifications).svg.png" alt="United States" style="width: 20px; height: 15px; object-fit: contain;">
+                        </button>
+                        <button class="lang-btn" data-lang-btn="es" onclick="switchLanguage('es')">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/9/9a/Flag_of_Spain.svg" alt="España" style="width: 20px; height: 13px; object-fit: contain;">
+                        </button>
+            </div>
         </div>
     </nav>
 </div>
@@ -27,10 +126,18 @@
     <section id="patrocinadores" class="anchor-section">
         <div class="container">
             <div class="section-header">
-                <span class="eyebrow">Nossos Parceiros</span>
+                <span class="eyebrow" data-lang="pt"><span class="eyebrow-text">Nossos Patrocinadores</span></span>
+                <span class="eyebrow" data-lang="en"><span class="eyebrow-text">Our Sponsorers</span></span>
+                <span class="eyebrow" data-lang="es"><span class="eyebrow-text">Nuestros patrocinadores</span></span>
             </div>
-                <p class="section-description">
+                <p class="section-description" data-lang="pt">
                     Agradecemos o apoio fundamental de nossos patrocinadores que tornam este projeto possível.
+                </p>
+                <p class="section-description" data-lang="en">
+                    We thank the fundamental support of our sponsors who make this project possible.
+                </p>
+                <p class="section-description" data-lang="es">
+                    Agradecemos el apoyo fundamental de nuestros patrocinadores que hacen posible este proyecto.
                 </p>
             </div>
 
@@ -78,7 +185,9 @@
     <div class="container foot-grid">
         <div class="foot-brand">
             <img class="foot-logo" src="./img/Untitled design (2).png" alt="Gear Up" />
-            <p class="foot-copy">Programa educacional para tornar STEAM acessível e envolvente.</p>
+            <p class="foot-copy" data-lang="pt">Programa educacional para tornar STEAM acessível e envolvente.</p>
+            <p class="foot-copy" data-lang="en">Educational program to make STEAM accessible and engaging.</p>
+            <p class="foot-copy" data-lang="es">Programa educativo para hacer STEAM accesible y atractivo</p>
         </div>
         <div class="foot-links">
             <div class="foot-links">
@@ -108,55 +217,75 @@
 </div>
 
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
-const hero = document.querySelector('.hero');
-const headbar = document.querySelector('.headbar');
-const obs = new IntersectionObserver(([entry]) => {
-    if (entry.isIntersecting) {
-        headbar.classList.remove('headbar--solid');
-    } else {
-        headbar.classList.add('headbar--solid');
+    // Sistema de alternância de idiomas
+    function switchLanguage(lang) {
+        document.body.setAttribute('data-current-lang', lang);
+        document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+        
+        // Atualiza botões
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang-btn') === lang);
+        });
+        
+        // Salva preferência
+        localStorage.setItem('preferred-language', lang);
     }
-}, { rootMargin: '-76px 0px 0px 0px', threshold: 0.01 });
-if (hero && headbar) { obs.observe(hero); }
-
-// Esconde ao rolar para baixo e mostra ao rolar para cima
-let lastY = window.scrollY;
-window.addEventListener('scroll', () => {
-    const currentY = window.scrollY;
-    const goingDown = currentY > lastY;
-    if (goingDown && currentY > 80) {
-        headbar.classList.add('headbar--hidden');
-    } else {
-        headbar.classList.remove('headbar--hidden');
+    
+    // Carrega idioma salvo
+    const savedLang = localStorage.getItem('preferred-language');
+    if (savedLang) {
+        switchLanguage(savedLang);
     }
-    lastY = currentY;
-}, { passive: true });
+    
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const hero = document.querySelector('.hero');
+    const headbar = document.querySelector('.headbar');
+    const obs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+            headbar.classList.remove('headbar--solid');
+        } else {
+            headbar.classList.add('headbar--solid');
+        }
+    }, { rootMargin: '-76px 0px 0px 0px', threshold: 0.01 });
+    if (hero && headbar) { obs.observe(hero); }
 
-// Lightbox simples
-const gallery = document.getElementById('gallery');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-function openLightbox(src, alt){
-    lightboxImg.src = src; lightboxImg.alt = alt || '';
-    lightbox.classList.add('open');
-    lightbox.setAttribute('aria-hidden', 'false');
-}
-window.closeLightbox = function(){
-    lightbox.classList.remove('open');
-    lightbox.setAttribute('aria-hidden', 'true');
-    lightboxImg.src = '';
-}
-if (gallery){
-    gallery.addEventListener('click', (e)=>{
-        const img = e.target.closest('img');
-        if(!img) return;
-        openLightbox(img.src, img.alt);
-    });
-    lightbox.addEventListener('click', (e)=>{
-        if(e.target === lightbox) closeLightbox();
-    });
-}
+    // Esconde ao rolar para baixo e mostra ao rolar para cima
+    let lastY = window.scrollY;
+    window.addEventListener('scroll', () => {
+        const currentY = window.scrollY;
+        const goingDown = currentY > lastY;
+        if (goingDown && currentY > 80) {
+            headbar.classList.add('headbar--hidden');
+        } else {
+            headbar.classList.remove('headbar--hidden');
+        }
+        lastY = currentY;
+    }, { passive: true });
+
+    // Lightbox simples
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    function openLightbox(src, alt){
+        lightboxImg.src = src; lightboxImg.alt = alt || '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+    }
+    window.closeLightbox = function(){
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        lightboxImg.src = '';
+    }
+    if (gallery){
+        gallery.addEventListener('click', (e)=>{
+            const img = e.target.closest('img');
+            if(!img) return;
+            openLightbox(img.src, img.alt);
+        });
+        lightbox.addEventListener('click', (e)=>{
+            if(e.target === lightbox) closeLightbox();
+        });
+    }
 </script>
 
 </body>

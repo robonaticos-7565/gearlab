@@ -7,8 +7,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: var(--bg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;    background: var(--bg);
     color: var(--text);
 }
 
@@ -29,10 +28,11 @@ html { scroll-behavior: smooth; }
     position: relative;
     width: 100%;
     min-height: 100vh; /* ocupa a tela inteira */
-    background-image: url('./img/hero.png');
+    background-image: url('./img/7e1cbbdd-a197-43a1-905c-4e61d48a97ca.jpg');
     background-size: cover; /* preenche toda a área */
     background-position: center;
     background-repeat: no-repeat;
+    opacity: 0.8;
 }
 
 /* ============ HEADER/NAVBAR ============ */
@@ -96,13 +96,14 @@ html { scroll-behavior: smooth; }
     font-size: 1.2rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 6px 10px;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding: 6px 8px;
     border: 1px solid var(--divider);
     border-radius: 999px;
     background: rgba(0,0,0,0.03);
-    position: absolute;
-    left: 505px;
-    top: 80px;
+    position: relative;
+    top: -50px;
 }
 
 h2.section-title {

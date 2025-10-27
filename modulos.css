@@ -130,16 +130,30 @@ body {
 .breadcrumb a:hover { text-decoration: underline; }
 .section-header { margin-bottom: 32px; text-align: left; }
 .eyebrow {
-    display: inline-block;
+    display: inline-flex;
+    align-items: left;
     text-transform: uppercase;
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 0.06em;
+    color: #333;
+    letter-spacing: 0.12rem;
     padding: 6px 10px;
     border-radius: 999px;
-    border: 1px solid var(--divider);
-    background: #f7c11e19
+    border: 1px solid #f7c11e;
+    background: #f7c11e;
+    margin-left: 0;
+    margin-right: auto;
+    position: absolute;
+    left: 80px;
+
+}
+
+.eyebrow-text {
+    color: #333;
+    font-size: 1.1rem;
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+    line-height: 1;
 }
 .section-title { font-size: 2rem; font-weight: 700; color: var(--text); margin-top: 12px; }
 
