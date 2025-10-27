@@ -333,12 +333,47 @@ p.lead {
 @media (max-width: 968px) {
     .partners-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
 @media (max-width: 640px) {
     .partners-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .partner-card {
+        padding: 20px;
+        min-height: 120px;
+    }
+    
+    .partner-card img {
+        max-width: 150px;
+        max-height: 60px;
+    }
+    
+    /* Hero mobile */
+    .agr-hero {
+        min-height: 60vh;
+        height: auto;
+    }
+    
+    /* Section header mobile */
+    .section-header {
+        margin-bottom: 30px;
+    }
+    
+    .section-description {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    .eyebrow {
+        font-size: 0.85rem;
+        padding: 4px 8px;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
@@ -385,6 +420,7 @@ p.lead {
     .pdf-viewer { height: 520px; }
     .section-title { font-size: 1.6rem; }
 }
+
 @media (max-width: 480px) {
     .card { padding: 20px; }
     .lead { font-size: 1rem; }
@@ -394,6 +430,31 @@ p.lead {
     .nav { gap: 8px; padding: 8px; }
     .nav a { padding: 6px 10px; font-size: .9rem; }
     .cta-bar { flex-direction: column; gap: 10px; }
+    
+    /* Navbar mobile - ajuste de tamanho */
+    .headbar {
+        top: 32px;
+    }
+    
+    .headbar .nav {
+        gap: 6px;
+        padding: 6px 8px;
+        width: auto;
+    }
+    
+    .headbar a {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+    }
+    
+    /* Section title mobile */
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    h2.section-title {
+        font-size: 2rem;
+    }
 }
 /* Extra spacing for content under the fixed header */
 @media (min-width: 0px) {

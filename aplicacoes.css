@@ -340,7 +340,14 @@ body {
     .headbar a { padding: 8px; font-size: .95rem; }
     .pdf-viewer { height: 520px; }
     .section-title { font-size: 1.6rem; }
+    
+    /* Aplicações grid - 1 coluna em tablets */
+    .applications-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
 }
+
 @media (max-width: 480px) {
     .card { padding: 20px; }
     .lead { font-size: 1rem; }
@@ -350,6 +357,60 @@ body {
     .nav { gap: 8px; padding: 8px; }
     .nav a { padding: 6px 10px; font-size: .9rem; }
     .cta-bar { flex-direction: column; gap: 10px; }
+    
+    /* Aplicações grid - ajuste para mobile */
+    .applications-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 1.5rem 0;
+    }
+    
+    .application-card {
+        border-radius: 12px;
+    }
+    
+    .card-image {
+        height: 200px;
+    }
+    
+    .card-content {
+        padding: 1rem;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+    }
+    
+    .card-description {
+        font-size: 0.85rem;
+    }
+    
+    /* Navbar mobile - ajuste de tamanho */
+    .headbar {
+        top: 32px;
+    }
+    
+    .headbar .nav {
+        gap: 6px;
+        padding: 6px 8px;
+        width: auto;
+    }
+    
+    .headbar a {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+    }
+    
+    /* Hero mobile */
+    .hero {
+        height: 60vh;
+        min-height: 400px;
+    }
+    
+    /* Section title mobile */
+    .section-title {
+        font-size: 1.4rem;
+    }
 }
 /* Extra spacing for content under the fixed header */
 @media (min-width: 0px) {

@@ -285,7 +285,18 @@ body {
     .headbar a { padding: 8px; font-size: .95rem; }
     .pdf-viewer { height: 520px; }
     .section-title { font-size: 1.6rem; }
+    
+    /* Hero section mobile */
+    .hero-section {
+        height: 50vh;
+        min-height: 350px;
+    }
+    
+    .hero-section img {
+        max-width: 95%;
+    }
 }
+
 @media (max-width: 480px) {
     .card { padding: 20px; }
     .lead { font-size: 1rem; }
@@ -295,6 +306,65 @@ body {
     .nav { gap: 8px; padding: 8px; }
     .nav a { padding: 6px 10px; font-size: .9rem; }
     .cta-bar { flex-direction: column; gap: 10px; }
+    
+    /* Navbar mobile - ajuste de tamanho */
+    .headbar {
+        top: 32px;
+    }
+    
+    .headbar .nav {
+        gap: 6px;
+        padding: 6px 8px;
+        width: auto;
+    }
+    
+    .headbar a {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+    }
+    
+    /* Hero section mobile */
+    .hero-section {
+        height: 40vh;
+        min-height: 300px;
+    }
+    
+    /* Module grid mobile */
+    .module-grid {
+        gap: 16px;
+    }
+    
+    .module-card {
+        padding: 16px;
+    }
+    
+    /* PDF container mobile */
+    .pdf-header {
+        padding: 12px 16px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .pdf-actions {
+        width: 100%;
+        margin-top: 12px;
+    }
+    
+    .btn-download {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Section title mobile */
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .eyebrow {
+        font-size: 0.85rem;
+        padding: 4px 8px;
+        left: 20px;
+    }
 }
 /* Extra spacing for content under the fixed header */
 @media (min-width: 0px) {

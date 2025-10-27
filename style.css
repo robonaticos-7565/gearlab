@@ -715,6 +715,7 @@ p.lead {
     .headbar .nav { 
         gap: 10px; 
         flex-wrap: wrap; 
+        padding: 8px 12px;
     }
     .headbar a { 
         padding: 8px; 
@@ -727,9 +728,85 @@ p.lead {
         justify-content: flex-start; 
         flex-wrap: wrap; 
     }
+    .section-title {
+        font-size: 1.6rem;
+    }
+    .lead, .copy {
+        font-size: 0.95rem;
+    }
 }
+
 /* Ajuste de deslocamento no mobile para evitar corte */
 @media (max-width: 480px) {
     .foot-links a.whatsapp,
     .foot-links a.instagram { margin-left: -8px; }
+    
+    /* Navbar mobile - ajuste de tamanho */
+    .headbar {
+        top: 32px;
+    }
+    
+    .headbar .nav {
+        gap: 6px;
+        padding: 6px 8px;
+        width: auto;
+    }
+    
+    .headbar a {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+    }
+    
+    /* Ajuste de logos dos cantos */
+    .corner-logo {
+        width: 32px !important;
+    }
+    
+    .logo-right {
+        width: 48px !important;
+    }
+    
+    /* Ajuste do eyebrow */
+    .eyebrow {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        font-size: 0.85rem;
+        padding: 4px 8px;
+    }
+    
+    /* Ajuste do section title */
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    /* Ajuste de grid */
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    /* Ajuste de stats */
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+@media (min-width: 0px) {
+    .site-content { padding-top: 120px; }
+}
+
+@media (max-width: 480px) {
+    .site-content { 
+        padding-top: 100px; 
+    }
+}
+
+/* Footer */
+/* 1. Corrigir o erro de sintaxe no .site-footer */
+.site-footer {
+    background: #E5E7EB;
+    border-top: 14px solid var(--divider);
+    margin-top: 0px;
+    /* REMOVIDO: position: absolute top 10000px; <- ESTE ERA O PROBLEMA! */
 }
