@@ -527,7 +527,7 @@ body {
     
     .foot-links a {
         width: 100%;
-        max-width: 150px;
+        max-width: 360px;
         justify-content: flex-start;
         padding: 12px 16px;
         font-size: 0.9rem;
