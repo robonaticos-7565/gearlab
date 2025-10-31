@@ -7,6 +7,14 @@
     --accent: #f7c11e;
 }
 
+.icon svg {
+    width: 24px;
+    height: 24px;
+    fill: #1f2937; /* cor do ícone */
+    display: block;
+}
+
+
 /* Reset / base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
