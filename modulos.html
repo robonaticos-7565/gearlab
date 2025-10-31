@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Módulos - GearUP</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="modulos.css">
     <style>
         .lang-toggle {
             display: flex;
@@ -97,25 +98,16 @@ body {
 /* Use global .container from style.css for consistent footer width */
 
 /* ============ HERO SECTION ============ */
+
 .hero-section {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 120px; /* Altura bem reduzida */
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f7c11e00;
-    overflow: hidden;
-}
-
-
-.hero-section img {
-    width: auto;
-    height: auto;
-    object-fit: cover;
-    opacity: 1;
-    position: absolute;
-    left: 0px;
+    margin-bottom: 30px; /* Espaço menor até o conteúdo */
 }
 
 .hero-section::after {
@@ -124,23 +116,22 @@ body {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 400px;
-    height: 400px;
+    width: 200px; /* Imagem menor */
+    height: 200px;
     z-index: 0;
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: right center;
+    background-position: center;
     opacity: 1;
     pointer-events: none;
 }
 
 .site-content {
-    padding-top: 0;
+    padding-top: 200px;
 }
-
-@media (max-width: 768px) {
+@media (max-width: auto) {
     .hero-section img {
-        max-width: 95%;
+        max-width: auto;
     }
     
     .hero-section::after {
